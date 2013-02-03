@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130127191332) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "eye_color"
     t.text     "quote"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
