@@ -1,0 +1,1 @@
+/Users/drew/Github/ember.js/dist/ember.min.js
