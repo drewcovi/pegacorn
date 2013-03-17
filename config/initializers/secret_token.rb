@@ -1,0 +1,1 @@
+App::Application.config.secret_token = "Nullam in dui mauris. Vivamus hendrerit."

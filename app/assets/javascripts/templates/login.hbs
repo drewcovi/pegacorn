@@ -1,0 +1,17 @@
+<div class="span6">
+<h1>Login</h1>
+{{ controller }}
+<form>
+  <fieldset>
+    <div>
+      <label {{bindAttr for="emailField.elementId"}}>E-mail</label>
+      {{view Ember.TextField valueBinding='email' name='email' viewName='emailField'}}
+    </div>
+    <div>
+      <label {{bindAttr for='passwordField.elementId'}}>Password</label>
+      {{view Ember.TextField type='password' valueBinding='password' name='password' viewName='passwordField'}}
+    </div>
+    <a href='#' {{action check}} class='btn btn-success'>Login</a>
+  </fieldset>
+</form>
+</div>

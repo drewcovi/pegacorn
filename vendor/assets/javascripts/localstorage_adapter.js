@@ -1,0 +1,1 @@
+/Users/drew/Github/ember-localstorage-adapter/localstorage_adapter.js

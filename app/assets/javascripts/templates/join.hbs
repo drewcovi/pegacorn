@@ -1,0 +1,23 @@
+<div class="span6">
+<h1>Join</h1>
+
+{{ controller }}
+<form>
+  <fieldset>
+    <div>
+      <label {{bindAttr for='emailField.elementId'}}>Email</label>
+      {{view Ember.TextField valueBinding='email' type="email" name='email' viewName='newEmailField' required="" }}
+    </div>
+    <div>
+      <label {{bindAttr for="usernameField.elementId"}}>Username</label>
+      {{view Ember.TextField valueBinding='username' name='username' viewName='newUsernameField' required="" }}
+    </div>
+    <div>
+      <label {{bindAttr for='passwordField.elementId'}}>Password</label>
+      {{view Ember.TextField valueBinding='password' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" type='password' name='password' viewName='newPasswordField' required="" }}
+    </div>
+    <a {{action create}} class='btn btn-success'>Create My Account</a>
+  </fieldset>
+  {{foo}}
+</form>
+</div>
