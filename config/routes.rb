@@ -1,4 +1,4 @@
-App::Application.routes.draw do
+EmberRailsAPI::Application.routes.draw do
   class FormatTest
     attr_accessor :mime_type
 

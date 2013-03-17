@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::API
 
   def render(*args)
-    logger.debug args
     if args.first.key?(:json) && args.first[:json].kind_of?(ActiveRecord::Base) && !args.first.key?(:status)
       if args.first[:json].destroyed?
         args.first[:status] = 204

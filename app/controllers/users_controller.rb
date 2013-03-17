@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     user.update_attributes(params[:user])
     render json: user
   end
-  
+
   def create
     user = User.new(params[:user])
     user.save

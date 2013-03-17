@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 46378add65ed3447a25be4b85c64c9a9645c8193
+  revision: 9fef47db4dd492e39909c0a7bc43becfea13d57b
   specs:
     active_model_serializers (0.7.0)
       activemodel (>= 3.0)
@@ -78,7 +78,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
-    multi_json (1.6.1)
+    multi_json (1.7.0)
     pg (0.14.1)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
