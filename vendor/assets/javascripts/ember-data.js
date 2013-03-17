@@ -1,1 +1,1 @@
-/Users/drew/Github/ember.js/data/dist/ember-data.min.js
+/Users/drew/Github/ember.js/data/dist/ember-data.js

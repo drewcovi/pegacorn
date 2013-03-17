@@ -1,3 +1,4 @@
 App.Store = DS.Store.extend
-  revision: 11
+  revision: 12
   adapter: DS.RESTAdapter.create({ bulkCommit: false })
+  # adapter: DS.LSAdapter.create({namespace: 'wello'})

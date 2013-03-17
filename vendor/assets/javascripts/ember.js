@@ -1,1 +1,1 @@
-/Users/drew/Github/ember.js/dist/ember.min.js
+/Users/drew/Github/ember.js/ember-1.0.0-rc.1.js

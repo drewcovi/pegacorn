@@ -3,6 +3,8 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require application
+#= require localstorage_adapter
 #= require bootstrap
 #= require_self
 #= require store
@@ -12,4 +14,11 @@
 #= require_tree ./templates
 #= require_tree ./views
 
-window.App = Ember.Application.create()
+
+
+
+window.App = Em.Application.create
+  paths:
+    login: '/sign_in'
+    logout: '/sign_out'
+    join: '/sign_up'
