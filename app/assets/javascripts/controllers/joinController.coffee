@@ -4,10 +4,19 @@ App.JoinController = Ember.ObjectController.extend
   username: null,
   
   create: ->
-    console.log 'committed', @email, @username, @password, App.get('paths').join
+    console.log 'committed', @email, @password
+    @store.commit()
+    @content.addObserver 'id', @, 'afterSave'
 
   afterSave: ->
     @transitionToRoute('account.success', @content)
 
   init: ->
-  	# console.log 'Join page triggered'
+
+  cancel: ->
+    # @content.deleteRecord()
+    # @transitionToRoute('users.index')
+
+  afterSave: ->
+    @content.removeObserver 'id', @, 'afterSave'
+    @transitionToRoute('home', @content)

@@ -19,6 +19,11 @@ App.ApplicationRoute = Ember.Route.extend
 App.IndexRoute = Ember.Route.extend
   setupController: (controller, model) ->
     @controllerFor('application').set('currentRoute', 'home')
+  activate: ->
+
+App.LoggedInRoute = Ember.Route.extend
+  setupController: ->
+    console.log 'landed on loggedin'
 
 App.UsersRoute = Ember.Route.extend
   setupController: (controller, model) ->
@@ -26,17 +31,13 @@ App.UsersRoute = Ember.Route.extend
     @controllerFor('application').set('currentRoute', 'users')
 
 App.LoginRoute = Ember.Route.extend
-  model: ->
-    # App.Account.find()
   setupController: (controller, model) ->
     console.log controller, 'foo'
     @controllerFor('application').set('currentRoute', 'login')
 
 App.JoinRoute = Ember.Route.extend
-  model: ->
-    # App.Account.createRecord()
   setupController: (controller, model) ->
-    console.log 'join route controller set up', controller, model
+    # console.log 'join route controller set up', controller, model
     @controllerFor('application').set('currentRoute', 'join')
 
 App.UsersIndexRoute = App.UsersRoute.extend

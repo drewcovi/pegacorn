@@ -1,4 +1,6 @@
 EmberRailsAPI::Application.routes.draw do
+  get "sessions/new"
+
   class FormatTest
     attr_accessor :mime_type
 

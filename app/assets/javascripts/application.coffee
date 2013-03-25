@@ -18,7 +18,9 @@
 
 
 window.App = Em.Application.create
+  LOG_TRANSITIONS: true
   paths:
     login: '/sign_in'
     logout: '/sign_out'
     join: '/sign_up'
+
