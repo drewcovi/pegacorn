@@ -11,6 +11,8 @@ gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 group :development, :test do
   gem 'debugger'
   gem 'sqlite3'
+  gem 'pg'
+  gem 'taps'
 end
 
 group :production do
