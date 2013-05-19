@@ -1,0 +1,305 @@
+# Logfile created on 2013-05-19 14:18:37 -0500 by logger.rb/36483
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Reading configuration from 
+[05/19/13 14:18:37 -0500 localhost (66523)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Environment: development
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Dispatcher: thin
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Application: development
+[05/19/13 14:18:37 -0500 localhost (66523)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing Net instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:18:37 -0500 localhost (66523)] INFO : Finished instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Reading configuration from 
+[05/19/13 14:25:06 -0500 localhost (66835)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Environment: development
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Dispatcher: thin
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Application: development
+[05/19/13 14:25:06 -0500 localhost (66835)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing Net instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:25:06 -0500 localhost (66835)] INFO : Finished instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Reading configuration from 
+[05/19/13 14:30:52 -0500 localhost (67128)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Environment: development
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Dispatcher: thin
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Application: development
+[05/19/13 14:30:52 -0500 localhost (67128)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing Net instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:30:52 -0500 localhost (67128)] INFO : Finished instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Starting the New Relic agent in "test" environment.
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "test" section of your newrelic.yml.
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Reading configuration from 
+[05/19/13 14:31:37 -0500 localhost (67246)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Environment: test
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Dispatcher: thin
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Application: test
+[05/19/13 14:31:37 -0500 localhost (67246)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing Net instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:31:37 -0500 localhost (67246)] INFO : Finished instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Starting the New Relic agent in "test" environment.
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "test" section of your newrelic.yml.
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Reading configuration from 
+[05/19/13 14:34:25 -0500 localhost (67409)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Environment: test
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Dispatcher: thin
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Application: test
+[05/19/13 14:34:25 -0500 localhost (67409)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing Net instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:34:25 -0500 localhost (67409)] INFO : Finished instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Reading configuration from 
+[05/19/13 14:35:57 -0500 localhost (67480)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Environment: development
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Dispatcher: thin
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Application: development
+[05/19/13 14:35:57 -0500 localhost (67480)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing Net instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:35:57 -0500 localhost (67480)] INFO : Finished instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Reading configuration from 
+[05/19/13 14:36:13 -0500 localhost (67504)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Environment: development
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Dispatcher: thin
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Application: development
+[05/19/13 14:36:13 -0500 localhost (67504)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing Net instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:36:13 -0500 localhost (67504)] INFO : Finished instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Reading configuration from 
+[05/19/13 14:36:25 -0500 localhost (67528)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Environment: development
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Dispatcher: thin
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Application: development
+[05/19/13 14:36:25 -0500 localhost (67528)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing Net instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:36:25 -0500 localhost (67528)] INFO : Finished instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Reading configuration from 
+[05/19/13 14:41:35 -0500 localhost (67784)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Environment: development
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Dispatcher: thin
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Application: development
+[05/19/13 14:41:35 -0500 localhost (67784)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing Net instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:41:35 -0500 localhost (67784)] INFO : Finished instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Reading configuration from 
+[05/19/13 14:41:53 -0500 localhost (67839)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Environment: development
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Dispatcher: thin
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Application: development
+[05/19/13 14:41:53 -0500 localhost (67839)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing Net instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:41:53 -0500 localhost (67839)] INFO : Finished instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Reading configuration from 
+[05/19/13 14:47:23 -0500 localhost (68309)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Environment: development
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Dispatcher: thin
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Application: development
+[05/19/13 14:47:23 -0500 localhost (68309)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing Net instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:47:23 -0500 localhost (68309)] INFO : Finished instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Reading configuration from 
+[05/19/13 14:49:08 -0500 localhost (68497)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Environment: development
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Dispatcher: thin
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Application: development
+[05/19/13 14:49:08 -0500 localhost (68497)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing Net instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:49:08 -0500 localhost (68497)] INFO : Finished instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Reading configuration from 
+[05/19/13 14:49:27 -0500 localhost (68526)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Environment: development
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Dispatcher: thin
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Application: development
+[05/19/13 14:49:27 -0500 localhost (68526)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing Net instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:49:27 -0500 localhost (68526)] INFO : Finished instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Reading configuration from 
+[05/19/13 14:49:33 -0500 localhost (68549)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Environment: development
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Dispatcher: thin
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Application: development
+[05/19/13 14:49:33 -0500 localhost (68549)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing Net instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:49:33 -0500 localhost (68549)] INFO : Finished instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Reading configuration from 
+[05/19/13 14:49:53 -0500 localhost (68589)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Environment: development
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Dispatcher: thin
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Application: development
+[05/19/13 14:49:53 -0500 localhost (68589)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing Net instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:49:53 -0500 localhost (68589)] INFO : Finished instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Reading configuration from 
+[05/19/13 14:50:49 -0500 localhost (68711)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Environment: development
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Dispatcher: thin
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Application: development
+[05/19/13 14:50:49 -0500 localhost (68711)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing Net instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:50:49 -0500 localhost (68711)] INFO : Finished instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Reading configuration from 
+[05/19/13 14:51:49 -0500 localhost (68823)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Environment: development
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Dispatcher: thin
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Application: development
+[05/19/13 14:51:49 -0500 localhost (68823)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing Net instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:51:49 -0500 localhost (68823)] INFO : Finished instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Starting the New Relic agent in "development" environment.
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Reading configuration from 
+[05/19/13 14:52:38 -0500 localhost (68880)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Environment: development
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Dispatcher: thin
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Application: development
+[05/19/13 14:52:38 -0500 localhost (68880)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing Net instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:52:38 -0500 localhost (68880)] INFO : Finished instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Starting the New Relic agent in "test" environment.
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "test" section of your newrelic.yml.
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Reading configuration from 
+[05/19/13 14:53:59 -0500 localhost (69019)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Environment: test
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Dispatcher: thin
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Application: test
+[05/19/13 14:53:59 -0500 localhost (69019)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing ActiveRecord instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing Net instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing Unicorn instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing Rails 3 Controller instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Installing Rails3 Error instrumentation
+[05/19/13 14:53:59 -0500 localhost (69019)] INFO : Finished instrumentation

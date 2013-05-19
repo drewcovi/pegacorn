@@ -1,0 +1,895 @@
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (5.6ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateUsers (20130101211258)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "quote" text, "first_name" varchar(255), "last_name" varchar(255), "age" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130101211258')[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (2.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (8.1ms)[0m  [1mINSERT INTO "users" ("age", "created_at", "first_name", "last_name", "quote", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 68], ["created_at", Sat, 02 Feb 2013 22:26:32 UTC +00:00], ["first_name", "William"], ["last_name", "Harrison"], ["quote", "I'm just singin' in the rain!"], ["updated_at", Sat, 02 Feb 2013 22:26:32 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("age", "created_at", "first_name", "last_name", "quote", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["age", 56], ["created_at", Sat, 02 Feb 2013 22:26:33 UTC +00:00], ["first_name", "Abraham"], ["last_name", "Lincoln"], ["quote", "I'd like to see a show tonight."], ["updated_at", Sat, 02 Feb 2013 22:26:33 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-02 16:27:07 -0600
+Processing by EmberController#index as HTML
+Compiled application.css  (1487ms)  (pid 11566)
+Compiled modernizr.js  (1ms)  (pid 11566)
+Compiled jquery.js  (3ms)  (pid 11566)
+Compiled handlebars.js  (0ms)  (pid 11566)
+Compiled ember.js  (46ms)  (pid 11566)
+Compiled ember-data.js  (33ms)  (pid 11566)
+Compiled bootstrap-transition.js  (0ms)  (pid 11566)
+Compiled bootstrap-alert.js  (0ms)  (pid 11566)
+Compiled bootstrap-button.js  (0ms)  (pid 11566)
+Compiled bootstrap-carousel.js  (0ms)  (pid 11566)
+Compiled bootstrap-collapse.js  (0ms)  (pid 11566)
+Compiled bootstrap-dropdown.js  (0ms)  (pid 11566)
+Compiled bootstrap-modal.js  (0ms)  (pid 11566)
+Compiled bootstrap-scrollspy.js  (0ms)  (pid 11566)
+Compiled bootstrap-tab.js  (1ms)  (pid 11566)
+Compiled bootstrap-tooltip.js  (0ms)  (pid 11566)
+Compiled bootstrap-popover.js  (0ms)  (pid 11566)
+Compiled bootstrap-typeahead.js  (0ms)  (pid 11566)
+Compiled bootstrap.js  (213ms)  (pid 11566)
+Compiled store.js  (182ms)  (pid 11566)
+Compiled routes.js  (169ms)  (pid 11566)
+Compiled controllers/applicationController.js  (136ms)  (pid 11566)
+Compiled controllers/users/editController.js  (146ms)  (pid 11566)
+Compiled controllers/users/newController.js  (134ms)  (pid 11566)
+Compiled models/user.js  (140ms)  (pid 11566)
+Compiled templates/application.js  (3ms)  (pid 11566)
+Compiled templates/index.js  (0ms)  (pid 11566)
+Compiled templates/users/edit.js  (0ms)  (pid 11566)
+Compiled templates/users/form.js  (0ms)  (pid 11566)
+Compiled templates/users/index.js  (0ms)  (pid 11566)
+Compiled templates/users/new.js  (0ms)  (pid 11566)
+Compiled templates/users/show.js  (0ms)  (pid 11566)
+Compiled application.js  (1763ms)  (pid 11566)
+  Rendered ember/index.html.erb (3486.7ms)
+Completed 200 OK in 3499ms (Views: 3498.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:27:14 -0600
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 28ms (Views: 4.7ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:27:16 -0600
+Processing by UsersController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:28:07 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (16.8ms)
+Completed 200 OK in 18ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:28:08 -0600
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:29:31 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (14.2ms)
+Completed 200 OK in 15ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:29:32 -0600
+Processing by UsersController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:30:04 -0600
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-02-02 16:35:26 -0600
+Processing by UsersController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:22:27 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/1"}
+  Rendered ember/index.html.erb (184.7ms)
+Completed 200 OK in 197ms (Views: 197.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:22:27 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 23ms (Views: 3.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:23:45 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/1"}
+  Rendered ember/index.html.erb (18.6ms)
+Completed 200 OK in 20ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:23:46 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:23:48 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/2"}
+  Rendered ember/index.html.erb (23.2ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:23:49 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:23:59 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/1"}
+  Rendered ember/index.html.erb (21.5ms)
+Completed 200 OK in 23ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:23:59 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:25:02 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/2"}
+  Rendered ember/index.html.erb (19.5ms)
+Completed 200 OK in 21ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:25:03 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:25:42 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/2"}
+  Rendered ember/index.html.erb (23.1ms)
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:25:42 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "2"]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:25:46 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/1"}
+  Rendered ember/index.html.erb (37.6ms)
+Completed 200 OK in 40ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-02-02 17:25:47 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:36:03 -0600
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/2"}
+  Rendered ember/index.html.erb (22.5ms)
+Completed 200 OK in 24ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2013-02-02 17:36:04 -0600
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "2"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 12:33:27 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (350.5ms)
+Completed 200 OK in 369ms (Views: 368.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 12:33:30 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 28ms (Views: 5.0ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-03-17 12:33:35 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"testqtest", "last_name"=>"test", "quote"=>"test", "age"=>nil}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (13.0ms)[0m  [1mINSERT INTO "users" ("age", "created_at", "first_name", "last_name", "quote", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", nil], ["created_at", Sun, 17 Mar 2013 17:33:35 UTC +00:00], ["first_name", "testqtest"], ["last_name", "test"], ["quote", "test"], ["updated_at", Sun, 17 Mar 2013 17:33:35 UTC +00:00]]
+  [1m[35m (4.2ms)[0m  commit transaction
+Completed 201 Created in 21ms (Views: 0.4ms | ActiveRecord: 17.3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-03-17 12:40:57 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users/new"}
+  Rendered ember/index.html.erb (209.9ms)
+Completed 200 OK in 222ms (Views: 221.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-03-17 12:41:05 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"test", "last_name"=>"test", "quote"=>"test", "age"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (12.9ms)[0m  INSERT INTO "users" ("age", "created_at", "first_name", "last_name", "quote", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["age", nil], ["created_at", Sun, 17 Mar 2013 17:41:05 UTC +00:00], ["first_name", "test"], ["last_name", "test"], ["quote", "test"], ["updated_at", Sun, 17 Mar 2013 17:41:05 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+#<User:0x007fdd834356d0>
+Completed 201 Created in 34ms (Views: 3.7ms | ActiveRecord: 16.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 12:46:02 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (177.4ms)
+Completed 200 OK in 189ms (Views: 189.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 12:46:04 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+[#<User id: 1, quote: "I'm just singin' in the rain!", first_name: "William", last_name: "Harrison", age: 68, created_at: "2013-02-02 22:26:32", updated_at: "2013-02-02 22:26:32">, #<User id: 2, quote: "I'd like to see a show tonight.", first_name: "Abraham", last_name: "Lincoln", age: 56, created_at: "2013-02-02 22:26:33", updated_at: "2013-02-02 22:26:33">, #<User id: 3, quote: "test", first_name: "testqtest", last_name: "test", age: nil, created_at: "2013-03-17 17:33:35", updated_at: "2013-03-17 17:33:35">, #<User id: 4, quote: "test", first_name: "test", last_name: "test", age: nil, created_at: "2013-03-17 17:41:05", updated_at: "2013-03-17 17:41:05">]
+Completed 200 OK in 20ms (Views: 3.7ms | ActiveRecord: 2.9ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:09:31 -0500
+
+ActionController::RoutingError (uninitialized constant ApplicationHelper):
+  app/controllers/ember_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:09:34 -0500
+Processing by EmberController#index as HTML
+Compiled handlebars.js  (1ms)  (pid 57165)
+Compiled application.js  (319ms)  (pid 57165)
+  Rendered ember/index.html.erb (612.9ms)
+Completed 200 OK in 616ms (Views: 615.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:09:48 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (23.0ms)
+Completed 200 OK in 25ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:11:17 -0500
+
+ActionController::RoutingError (uninitialized constant ApplicationHelper):
+  app/controllers/ember_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (32.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:11:18 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (322ms)  (pid 57329)
+  Rendered ember/index.html.erb (537.6ms)
+Completed 200 OK in 540ms (Views: 539.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:11:28 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (23.3ms)
+Completed 200 OK in 25ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 13:16:14 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (282.9ms)
+Completed 200 OK in 294ms (Views: 293.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:42 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (68.1ms)
+Completed 200 OK in 70ms (Views: 70.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:43 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 22ms (Views: 4.3ms | ActiveRecord: 4.5ms)
+
+
+Started DELETE "/users/4" for 127.0.0.1 at 2013-03-17 13:16:46 -0500
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 4]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 18ms (Views: 0.9ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:46 -0500
+Processing by UsersController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2013-03-17 13:16:50 -0500
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 204 No Content in 4ms (Views: 0.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:50 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2013-03-17 13:16:54 -0500
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (Views: 0.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:54 -0500
+Processing by UsersController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:16:59 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (31.3ms)
+Completed 200 OK in 33ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 13:17:00 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 14:33:43 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (251ms)  (pid 953)
+Compiled application.js  (171ms)  (pid 953)
+  Rendered ember/index.html.erb (748.9ms)
+Completed 200 OK in 762ms (Views: 761.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 15:03:13 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (280.3ms)
+Completed 200 OK in 333ms (Views: 324.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 15:12:27 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (76.7ms)
+Completed 200 OK in 81ms (Views: 81.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 15:31:10 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (1250.0ms)
+Completed 200 OK in 1252ms (Views: 1251.4ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (5.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130101211258)
+Migrating to SorceryCore (20130317233009)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "salt" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+SQLite3::SQLException: table "users" already exists: CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "salt" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateUsers (20130101211258)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "quote" text, "first_name" varchar(255), "last_name" varchar(255), "eye_color" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130101211258')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to SorceryCore (20130317233009)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "salt" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+SQLite3::SQLException: table "users" already exists: CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "salt" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to SorceryCore (20130317233009)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "salt" varchar(255), "quote" text, "first_name" varchar(255), "last_name" varchar(255), "eye_color" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130317233009')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to SorceryRememberMe (20130317233010)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "users" ADD "remember_me_token" varchar(255) DEFAULT NULL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "remember_me_token_expires_at" datetime DEFAULT NULL[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_users_on_remember_me_token" ON "users" ("remember_me_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130317233010')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 18:48:25 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (224.8ms)
+Completed 200 OK in 237ms (Views: 236.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 18:48:38 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"users"}
+  Rendered ember/index.html.erb (27.8ms)
+Completed 200 OK in 29ms (Views: 29.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-03-17 18:48:38 -0500
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:07:02 -0500
+Processing by EmberController#index as HTML
+Compiled store.js  (209ms)  (pid 7019)
+Compiled templates/join.js  (4ms)  (pid 7019)
+Compiled templates/login.js  (0ms)  (pid 7019)
+Compiled application.js  (179ms)  (pid 7019)
+  Rendered ember/index.html.erb (750.1ms)
+Completed 200 OK in 763ms (Views: 762.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:09:54 -0500
+Processing by EmberController#index as HTML
+Compiled templates/join.js  (0ms)  (pid 7019)
+Compiled application.js  (152ms)  (pid 7019)
+  Rendered ember/index.html.erb (309.8ms)
+Completed 200 OK in 311ms (Views: 311.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:10:22 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (29.7ms)
+Completed 200 OK in 31ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:14:51 -0500
+Processing by EmberController#index as HTML
+Compiled controllers/joinController.js  (139ms)  (pid 7019)
+Compiled application.js  (150ms)  (pid 7019)
+  Rendered ember/index.html.erb (471.9ms)
+Completed 200 OK in 474ms (Views: 473.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:17:58 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled models/account.js  (147ms)  (pid 7019)
+Compiled application.js  (151ms)  (pid 7019)
+  Rendered ember/index.html.erb (423.6ms)
+Completed 200 OK in 425ms (Views: 424.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:43:00 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (264.2ms)
+Completed 500 Internal Server Error in 267ms
+
+ActionView::Template::Error (SyntaxError: regular expressions cannot begin with `*` on line 22
+  (in /Users/drew/Sites/traclist/app/assets/javascripts/routes.coffee)):
+    2: <html lang='en'>
+    3:   <head>
+    4:     <%= stylesheet_link_tag :application, :media => :all %>
+    5:     <%= javascript_include_tag :application %>
+    6:     <title>Title</title>
+    7:   </head>
+    8:   <body>
+  app/views/ember/index.html.erb:5:in `_app_views_ember_index_html_erb__843069025950316314_70360778271580'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.5ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:43:13 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (187ms)  (pid 7019)
+Compiled application.js  (149ms)  (pid 7019)
+  Rendered ember/index.html.erb (535.9ms)
+Completed 200 OK in 538ms (Views: 537.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:43:29 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (192ms)  (pid 7019)
+Compiled application.js  (153ms)  (pid 7019)
+  Rendered ember/index.html.erb (493.2ms)
+Completed 200 OK in 495ms (Views: 494.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:44:59 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (193ms)  (pid 7019)
+Compiled application.js  (158ms)  (pid 7019)
+  Rendered ember/index.html.erb (520.7ms)
+Completed 200 OK in 523ms (Views: 522.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:45:02 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (34.3ms)
+Completed 200 OK in 36ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:45:17 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (188ms)  (pid 7019)
+Compiled application.js  (147ms)  (pid 7019)
+  Rendered ember/index.html.erb (483.3ms)
+Completed 200 OK in 485ms (Views: 484.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:45:30 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (205ms)  (pid 7019)
+Compiled application.js  (223ms)  (pid 7019)
+  Rendered ember/index.html.erb (541.7ms)
+Completed 200 OK in 544ms (Views: 543.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:45:34 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (27.7ms)
+Completed 200 OK in 29ms (Views: 29.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:46:22 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (187ms)  (pid 7019)
+Compiled application.js  (170ms)  (pid 7019)
+  Rendered ember/index.html.erb (535.1ms)
+Completed 200 OK in 537ms (Views: 536.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-03-17 23:49:30 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+Compiled routes.js  (197ms)  (pid 7019)
+Compiled application.js  (156ms)  (pid 7019)
+  Rendered ember/index.html.erb (536.4ms)
+Completed 200 OK in 539ms (Views: 538.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:49:35 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (29.1ms)
+Completed 200 OK in 31ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:49:46 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (200ms)  (pid 7019)
+Compiled application.js  (147ms)  (pid 7019)
+  Rendered ember/index.html.erb (529.3ms)
+Completed 200 OK in 531ms (Views: 530.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:51:02 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (195ms)  (pid 7019)
+Compiled application.js  (153ms)  (pid 7019)
+  Rendered ember/index.html.erb (529.1ms)
+Completed 200 OK in 531ms (Views: 530.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:51:16 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (192ms)  (pid 7019)
+Compiled application.js  (147ms)  (pid 7019)
+  Rendered ember/index.html.erb (523.2ms)
+Completed 200 OK in 525ms (Views: 524.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:51:24 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (28.9ms)
+Completed 200 OK in 30ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:51:58 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (193ms)  (pid 7019)
+Compiled application.js  (155ms)  (pid 7019)
+  Rendered ember/index.html.erb (528.5ms)
+Completed 200 OK in 530ms (Views: 529.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:52:21 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (207ms)  (pid 7019)
+Compiled application.js  (155ms)  (pid 7019)
+  Rendered ember/index.html.erb (522.9ms)
+Completed 200 OK in 525ms (Views: 524.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:54:09 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (184ms)  (pid 7019)
+Compiled application.js  (155ms)  (pid 7019)
+  Rendered ember/index.html.erb (489.5ms)
+Completed 200 OK in 492ms (Views: 491.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:54:18 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (190ms)  (pid 7019)
+Compiled application.js  (149ms)  (pid 7019)
+  Rendered ember/index.html.erb (482.7ms)
+Completed 200 OK in 485ms (Views: 484.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:55:53 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (187ms)  (pid 7019)
+Compiled application.js  (154ms)  (pid 7019)
+  Rendered ember/index.html.erb (520.5ms)
+Completed 200 OK in 522ms (Views: 521.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-17 23:56:10 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (189ms)  (pid 7019)
+Compiled application.js  (148ms)  (pid 7019)
+  Rendered ember/index.html.erb (488.0ms)
+Completed 200 OK in 490ms (Views: 490.1ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 08:50:49 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (225ms)  (pid 7727)
+  Rendered ember/index.html.erb (516.3ms)
+Completed 200 OK in 529ms (Views: 529.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 08:51:17 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (205ms)  (pid 7727)
+Compiled application.js  (199ms)  (pid 7727)
+  Rendered ember/index.html.erb (588.5ms)
+Completed 200 OK in 591ms (Views: 590.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 08:51:37 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (198ms)  (pid 7727)
+Compiled application.js  (204ms)  (pid 7727)
+  Rendered ember/index.html.erb (607.2ms)
+Completed 200 OK in 609ms (Views: 609.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 08:54:06 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (167ms)  (pid 7727)
+  Rendered ember/index.html.erb (373.7ms)
+Completed 200 OK in 375ms (Views: 375.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:01:54 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (555.3ms)
+Completed 500 Internal Server Error in 559ms
+
+ActionView::Template::Error (SyntaxError: reserved word "function" on line 58
+  (in /Users/drew/Sites/traclist/app/assets/javascripts/application.coffee)):
+    2: <html lang='en'>
+    3:   <head>
+    4:     <%= stylesheet_link_tag :application, :media => :all %>
+    5:     <%= javascript_include_tag :application %>
+    6:     <title>Title</title>
+    7:   </head>
+    8:   <body>
+  app/views/ember/index.html.erb:5:in `_app_views_ember_index_html_erb___4274875923165744091_70230351932700'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.8ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:02:08 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (407.5ms)
+Completed 500 Internal Server Error in 409ms
+
+ActionView::Template::Error (SyntaxError: reserved word "function" on line 65
+  (in /Users/drew/Sites/traclist/app/assets/javascripts/application.coffee)):
+    2: <html lang='en'>
+    3:   <head>
+    4:     <%= stylesheet_link_tag :application, :media => :all %>
+    5:     <%= javascript_include_tag :application %>
+    6:     <title>Title</title>
+    7:   </head>
+    8:   <body>
+  app/views/ember/index.html.erb:5:in `_app_views_ember_index_html_erb___4274875923165744091_70230351932700'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:02:11 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (282.1ms)
+Completed 500 Internal Server Error in 285ms
+
+ActionView::Template::Error (SyntaxError: reserved word "function" on line 65
+  (in /Users/drew/Sites/traclist/app/assets/javascripts/application.coffee)):
+    2: <html lang='en'>
+    3:   <head>
+    4:     <%= stylesheet_link_tag :application, :media => :all %>
+    5:     <%= javascript_include_tag :application %>
+    6:     <title>Title</title>
+    7:   </head>
+    8:   <body>
+  app/views/ember/index.html.erb:5:in `_app_views_ember_index_html_erb___4274875923165744091_70230351932700'
+
+
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/drew/.rvm/gems/ruby-1.9.3-p374/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:02:21 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (193ms)  (pid 7727)
+  Rendered ember/index.html.erb (429.1ms)
+Completed 200 OK in 431ms (Views: 430.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:03:24 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (210ms)  (pid 7727)
+  Rendered ember/index.html.erb (397.2ms)
+Completed 200 OK in 399ms (Views: 399.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:04:03 -0500
+Processing by EmberController#index as HTML
+Compiled routes.js  (212ms)  (pid 7727)
+Compiled application.js  (262ms)  (pid 7727)
+  Rendered ember/index.html.erb (632.6ms)
+Completed 200 OK in 635ms (Views: 634.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:06:06 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (190ms)  (pid 7727)
+  Rendered ember/index.html.erb (408.3ms)
+Completed 200 OK in 410ms (Views: 410.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-18 09:07:01 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (193ms)  (pid 7727)
+  Rendered ember/index.html.erb (379.4ms)
+Completed 200 OK in 382ms (Views: 381.4ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-27 13:05:12 -0500
+Processing by EmberController#index as HTML
+Compiled application.js  (369ms)  (pid 3270)
+  Rendered ember/index.html.erb (695.0ms)
+Completed 200 OK in 709ms (Views: 708.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-27 13:05:16 -0500
+Processing by EmberController#index as HTML
+  Rendered ember/index.html.erb (41.9ms)
+Completed 200 OK in 44ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for 127.0.0.1 at 2013-04-27 13:05:56 -0500
+Processing by EmberController#index as HTML
+  Parameters: {"foo"=>"join"}
+  Rendered ember/index.html.erb (49.0ms)
+Completed 200 OK in 50ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
