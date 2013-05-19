@@ -5,12 +5,23 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2'
 gem 'pg',    '~> 0.14'
 gem 'rails-api'
+gem 'pg',    '~> 0.14'
 gem 'thin'
 #gem 'sorcery'
 
 group :development, :test do
   gem 'debugger'
   gem 'sqlite3'
+  gem 'spork'                       # speedier tests
+  gem 'guard-rspec'                 # watch app files
+  gem 'guard-spork'                 # spork integration
+  gem 'database_cleaner'            # cleanup database in tests
+  gem 'fabrication'                 # model stubber
+  gem 'shoulda'                     # model spec tester
+  gem 'rb-inotify', require: false  # Linux file notification
+  gem 'rb-fsevent', require: false  # OSX file notification
+  gem 'rb-fchange', require: false  # Windows file notification
+  gem 'taps'
 end
 
 group :production do
@@ -23,9 +34,12 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.0.3.0'
   gem 'handlebars_assets'
   gem 'jquery-rails', '~> 2.2'
+<<<<<<< HEAD
   gem 'sass-rails',   '~> 3.2'
   gem 'coffee-rails', '~> 3.2'
   gem 'uglifier',     '~> 1.3'
+=======
+>>>>>>> 8520f3cfe1cea17d2a562bbc61151290debd0499
 end
 
 group :development do
@@ -42,7 +56,6 @@ group :development do
   gem 'rb-fchange', require: false  # Windows file notification
 end
 
- 
 gem 'devise'                   # server-side authentication
 gem 'bcrypt-ruby'              # password encryption
 
