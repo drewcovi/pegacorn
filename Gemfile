@@ -34,12 +34,9 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.0.3.0'
   gem 'handlebars_assets'
   gem 'jquery-rails', '~> 2.2'
-<<<<<<< HEAD
   gem 'sass-rails',   '~> 3.2'
   gem 'coffee-rails', '~> 3.2'
   gem 'uglifier',     '~> 1.3'
-=======
->>>>>>> 8520f3cfe1cea17d2a562bbc61151290debd0499
 end
 
 group :development do
