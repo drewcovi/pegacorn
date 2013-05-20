@@ -1,0 +1,21 @@
+.navbar.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      App.AuthView
+      .nav-collapse.collapse
+        ul.nav
+          li class={isHome:active}
+              linkTo posts.index
+                | Posts list
+        if App.Auth.signedIn
+          li    
+            linkTo users.index
+              | Users list
+
+.container#main
+  .content
+    .row
+      .span12
+        .page-header
+          outlet
+

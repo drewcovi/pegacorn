@@ -1,0 +1,4 @@
+if App.Auth.signedIn
+  App.AuthSignOutView
+else
+  App.AuthSignInView

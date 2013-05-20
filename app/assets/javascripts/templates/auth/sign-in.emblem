@@ -1,0 +1,11 @@
+form
+  div
+    label Email
+    Ember.TextField valueBinding=view.email
+    label Password
+    Ember.TextField type='password' valueBinding=view.password
+
+    Ember.Checkbox checkedBinding=view.remember
+    label Remember me
+
+    button.btn Sign In
