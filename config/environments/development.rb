@@ -1,4 +1,4 @@
-EmberRailsAPI::Application.configure do
+App::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -34,7 +34,6 @@ EmberRailsAPI::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  config.ember.variant = :development
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
+  config.ember.variant = :development
 end

@@ -1,10 +1,3 @@
-App.User = DS.Model.extend(
-  firstName:  DS.attr('string', defaultValue: '' )
-  lastName:   DS.attr('string', defaultValue: '' )
-  eyeColor:   DS.attr('string', defaultValue: '' )
-  quote:   DS.attr('string', defaultValue: '' )
-  # account:    DS.belongsTo('')
-  fullName: (->
-    "#{@get('firstName')} #{@get('lastName')}"
-  ).property('firstName', 'lastName')
-)
+App.User = DS.Model.extend
+  email: DS.attr 'string'
+  param: DS.attr 'string'
