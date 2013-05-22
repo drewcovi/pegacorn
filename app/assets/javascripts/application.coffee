@@ -6,6 +6,7 @@
 #= require ember-auth
 #= require_self
 #= require auth
+#= require localstorage-adapter
 #= require app
 #= require_tree .
 window.App = Em.Application.create
