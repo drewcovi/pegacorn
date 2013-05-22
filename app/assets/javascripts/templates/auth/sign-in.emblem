@@ -5,7 +5,8 @@ form
     label Password
     Ember.TextField type='password' valueBinding=view.password
 
-    Ember.Checkbox checkedBinding=view.remember
-    label Remember me
+    label.checkbox
+      Ember.Checkbox class='checkbox' checkedBinding=view.remember
+      | Remember me
 
     button.btn Sign In

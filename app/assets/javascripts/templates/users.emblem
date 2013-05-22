@@ -1,1 +1,4 @@
-outlet
+if App.Auth.signedIn
+  outlet
+else
+  | You need to sign in first

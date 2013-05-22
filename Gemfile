@@ -35,7 +35,7 @@ gem 'bcrypt-ruby'              # password encryption
 gem 'inherited_resources'      # for easy RESTful API controller scaffolding
 gem 'active_model_serializers' # works out of the box with ember-data
 
-gem 'handlebars-source', '1.0.0.rc3'
+gem 'handlebars-source', '1.0.0.rc4'
 gem 'ember-rails'              # ember framework
 gem 'ember-auth-rails'         # client-side authentication
 gem 'emblem-rails'             # easier to write templates

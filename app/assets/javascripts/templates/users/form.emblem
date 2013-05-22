@@ -1,0 +1,10 @@
+form
+  div
+    label Email
+    Ember.TextField valueBinding="email"
+    label Password
+    Ember.TextField valueBinding="password" type='password'
+    label First Name
+    Ember.TextField valueBinding="firstName"
+    label Last Name
+    Ember.TextField valueBinding="lastName"
