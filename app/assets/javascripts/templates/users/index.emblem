@@ -1,6 +1,12 @@
 if App.Auth.signedIn
   ul: each controller
-    li: linkTo users.show this
-      email
+    li
+      linkTo 'users.show' this
+        email
+      span
+        '
+      linkTo 'users.edit' this | edit
+  linkTo users.new
+    | Add New User
 else
   | You need to sign in first

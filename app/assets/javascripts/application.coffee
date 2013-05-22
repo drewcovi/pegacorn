@@ -8,4 +8,5 @@
 #= require auth
 #= require app
 #= require_tree .
-window.App = Em.Application.create()
+window.App = Em.Application.create
+    LOG_TRANSITIONS: true

@@ -1,7 +1,7 @@
 App::Application.routes.draw do
   namespace :api do
-    resources :posts, only: [:index, :show]
-    resources :users, only: [:index, :show]
+    resources :posts, only: [:index, :show, :update, :new, :create, :destroy]
+    resources :users, only: [:index, :show, :update, :new, :create, :destroy]
   end
 
   devise_for :users, controllers: {sessions: 'sessions'}
