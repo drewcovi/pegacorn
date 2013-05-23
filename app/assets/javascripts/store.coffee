@@ -4,6 +4,6 @@ App.Store = DS.Store.extend
   #   url: '/api'
 
 App.Store.registerAdapter 'App.Post', DS.LSAdapter.create
-  url: "/api"
+  namespace: "pegacorn:posts"
 App.Store.registerAdapter 'App.User', DS.RESTAdapter.extend
   url: "/api"
