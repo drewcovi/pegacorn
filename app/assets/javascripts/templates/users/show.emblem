@@ -1,6 +1,13 @@
 if App.Auth.signedIn
   h1
     email
+  p
+    firstName
+    '
+    lastName
+  linkTo users.edit this class='btn btn-warning'
+    | edit
+  '
   linkTo users.index
     | Back to users list
 else
