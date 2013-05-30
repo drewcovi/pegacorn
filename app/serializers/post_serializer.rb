@@ -1,5 +1,5 @@
 class PostSerializer < BaseSerializer
-  attributes :id, :title, :param # prev code
+  attributes :id, :title, :body, :param
 
   def param
     "#{id}-#{title.dasherize.parameterize}"

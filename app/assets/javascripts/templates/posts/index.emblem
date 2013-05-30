@@ -1,3 +1,11 @@
-ul: each controller
-  li: linkTo posts.show this
-    = title
+table.table.table-striped
+  tbody
+  each controller
+    tr
+      td
+        linkTo posts.show this
+          = title
+      td
+        linkTo posts.edit this class='btn btn-warning' | edit
+
+linkTo posts.new class='btn btn-primary' | Add New Post

@@ -10,9 +10,6 @@ App.UsersEditController = Em.ObjectController.extend
     @transitionToRoute 'users.index'
 
   destroy: ->
-    # @content.deleteRecord()
-    # @store.commit()
-
     @transaction = @store.transaction()
     console.log @transaction
     @transaction.add( @content )

@@ -1787,3 +1787,108 @@ Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
 [05/30/13 13:57:02 -0500 Drews-MacBook-Pro.local (41332)] INFO : Installing Rails 3.1/3.2 view instrumentation
 [05/30/13 13:57:02 -0500 Drews-MacBook-Pro.local (41332)] INFO : Installing Rails3 Error instrumentation
 [05/30/13 13:57:02 -0500 Drews-MacBook-Pro.local (41332)] INFO : Finished instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Environment: development
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : No known dispatcher detected.
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] WARN : Agent configured not to send data in this environment.
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing Net instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing Unicorn instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 17:06:59 -0500 Drews-MacBook-Pro.local (46524)] INFO : Finished instrumentation
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] INFO : Environment: development
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] INFO : Dispatcher: unicorn
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 17:11:06 -0500 Drews-MacBook-Pro.local (47212)] WARN : Agent configured not to send data in this environment.
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing Net instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing Unicorn instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 17:11:08 -0500 Drews-MacBook-Pro.local (47212)] INFO : Finished instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Environment: development
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Dispatcher: unicorn
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] WARN : Agent configured not to send data in this environment.
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing Net instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing Unicorn instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 17:13:31 -0500 Drews-MacBook-Pro.local (47484)] INFO : Finished instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Environment: development
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Dispatcher: unicorn
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] WARN : Agent configured not to send data in this environment.
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing Net instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing Unicorn instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 17:22:16 -0500 Drews-MacBook-Pro.local (47719)] INFO : Finished instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Environment: development
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : No known dispatcher detected.
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] WARN : Agent configured not to send data in this environment.
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing Net instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing Unicorn instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 18:14:06 -0500 Drews-MacBook-Pro.local (48241)] INFO : Finished instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Environment: development
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : No known dispatcher detected.
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] WARN : Agent configured not to send data in this environment.
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing Net instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing Unicorn instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 18:14:47 -0500 Drews-MacBook-Pro.local (48264)] INFO : Finished instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Starting the New Relic agent in "development" environment.
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Reading configuration from config/newrelic.yml
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Environment: development
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Dispatcher: unicorn
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] WARN : Agent configured not to send data in this environment.
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing ActiveRecord instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing Net instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing Unicorn instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing Rails 3 Controller instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Installing Rails3 Error instrumentation
+[05/30/13 18:15:23 -0500 Drews-MacBook-Pro.local (48321)] INFO : Finished instrumentation
