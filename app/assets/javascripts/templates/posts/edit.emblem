@@ -1,0 +1,6 @@
+template 'posts/form'
+button.btn.btn-inverse click="cancel" target="controller" Cancel
+'
+button.btn click="save" Update
+'
+button.btn.btn-danger.pull-right click="destroy" Destroy

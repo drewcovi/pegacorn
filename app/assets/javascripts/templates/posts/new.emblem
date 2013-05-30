@@ -1,0 +1,3 @@
+template 'posts/form'
+button.btn.btn-inverse click="cancel" target="controller" Cancel
+button.btn.btn-success click="save" Create

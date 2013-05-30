@@ -1,0 +1,6 @@
+form
+  div
+    label Title
+    Ember.TextField valueBinding="title"
+    label Body
+    Ember.TextArea valueBinding="body"

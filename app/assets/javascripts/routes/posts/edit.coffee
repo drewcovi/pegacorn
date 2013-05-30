@@ -1,0 +1,1 @@
+App.PostsEditRoute = App.PostRoute.extend()
