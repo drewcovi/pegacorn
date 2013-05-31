@@ -7,3 +7,5 @@ App.Store.registerAdapter 'App.Post', DS.RESTAdapter.create
   url: "/api"
 App.Store.registerAdapter 'App.User', DS.RESTAdapter.extend
   url: "/api"
+App.Store.registerAdapter 'App.Workauth', DS.GUTSAdapter.extend
+  url: "/api"

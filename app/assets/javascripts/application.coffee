@@ -7,6 +7,7 @@
 #= require_self
 #= require auth
 #= require localstorage-adapter
+#= require guts-adapter
 #= require app
 #= require_tree .
 window.App = Em.Application.create
