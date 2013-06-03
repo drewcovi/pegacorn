@@ -7,9 +7,9 @@ App.User = DS.Model.extend
     "#{@get('firstName')} #{@get('lastName')}"
     ).property('firstName', 'lastName')
   param: DS.attr 'string'
-  projects: DS.hasMany 'DS.Project'
-  managedProjects: DS.hasMany 'DS.Project'
-  tasks: DS.hasMany 'DS.Task'
-  workauths: DS.hasMany 'DS.Workauth'
+  projects: DS.hasMany 'App.Project'
+  managedProjects: DS.hasMany 'App.Project'
+  tasks: DS.hasMany 'App.Task'
+  workauths: DS.hasMany 'App.Workauth'
   tcsToken: DS.attr 'string'
   ldap: DS.attr 'string'

@@ -1922,3 +1922,48 @@ Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
 [05/31/13 16:28:53 -0500 Drews-MacBook-Pro.local (2123)] INFO : Installing Rails 3.1/3.2 view instrumentation
 [05/31/13 16:28:53 -0500 Drews-MacBook-Pro.local (2123)] INFO : Installing Rails3 Error instrumentation
 [05/31/13 16:28:53 -0500 Drews-MacBook-Pro.local (2123)] INFO : Finished instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Starting the New Relic agent in "development" environment.
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Reading configuration from config/newrelic.yml
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Environment: development
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Dispatcher: unicorn
+[05/31/13 20:02:34 -0500 localhost (79668)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/31/13 20:02:34 -0500 localhost (79668)] WARN : Agent configured not to send data in this environment.
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing ActiveRecord instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing Net instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing Unicorn instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing Rails 3 Controller instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Installing Rails3 Error instrumentation
+[05/31/13 20:02:34 -0500 localhost (79668)] INFO : Finished instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Starting the New Relic agent in "development" environment.
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Reading configuration from config/newrelic.yml
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Environment: development
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Dispatcher: unicorn
+[05/31/13 20:03:57 -0500 localhost (79801)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/31/13 20:03:57 -0500 localhost (79801)] WARN : Agent configured not to send data in this environment.
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing ActiveRecord instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing Net instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing Unicorn instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing Rails 3 Controller instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Installing Rails3 Error instrumentation
+[05/31/13 20:03:57 -0500 localhost (79801)] INFO : Finished instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Starting the New Relic agent in "development" environment.
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Reading configuration from config/newrelic.yml
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Environment: development
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Dispatcher: unicorn
+[05/31/13 20:06:32 -0500 localhost (79955)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[05/31/13 20:06:32 -0500 localhost (79955)] WARN : Agent configured not to send data in this environment.
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing ActiveRecord instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing Net instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing Unicorn instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing Rails 3 Controller instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Installing Rails3 Error instrumentation
+[05/31/13 20:06:32 -0500 localhost (79955)] INFO : Finished instrumentation
