@@ -17,12 +17,12 @@ module Api
 
     def update
       user = User.find(params[:id])
-      # user.update_attributes(params[:user])
-      user.update_attributes(
-        :email => params[:user][:email],
-        :first_name => params[:user][:first_name],
-        :last_name => params[:user][:last_name]
-      )
+      user.update_attributes(params[:user])
+      # user.update_attributes(
+      #   :email => params[:user][:email],
+      #   :first_name => params[:user][:first_name],
+      #   :last_name => params[:user][:last_name]
+      # )
       render json: user
     end
 
@@ -40,6 +40,6 @@ module Api
       render json: user
     end
 
-    before_filter :auth_only!
+    #before_filter :auth_only!
   end
 end
