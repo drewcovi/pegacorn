@@ -1,2 +1,2 @@
-App.PostView = Em.View.extend
+App.WorkauthView = Em.View.extend
   templateName: 'workauths'

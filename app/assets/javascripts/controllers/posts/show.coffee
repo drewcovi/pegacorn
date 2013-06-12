@@ -1,1 +1,1 @@
-App.PostsShowController = Em.ObjectController.extend()
+# App.PostsShowController = Em.ObjectController.extend()

@@ -5,6 +5,7 @@ if App.Auth.signedIn
     firstName
     '
     lastName
+  render 'workauths/index'
   linkTo users.edit this class='btn btn-warning'
     | edit
   '

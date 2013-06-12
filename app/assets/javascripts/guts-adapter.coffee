@@ -1,4 +1,4 @@
-url = 'https://guts.clockwork.net/tcs/?action=get_work_auths_json'
+# url = 'https://guts.clockwork.net/tcs/?action=get_work_auths_json'
 token = '01b82f2e4ce42ad2ad8d79978a7f272c'
 ldap = 'drew'
 
@@ -10,11 +10,13 @@ Array::unique = (identifier)->
 
 DS.GUTSSerializer = DS.JSONSerializer.extend
 
-DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
-
+DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
+  init: ->
+    console.log 'initializing guts adapter'
   findWorkauths: (user, name, process) ->
     # token = user.tcsToken
     # ldap = "#{ user.ldap }@clockwork.net"
+    console.log('finding workauths using guts api', user, name, process)
     $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
       (data, status, jqxhr)->
         workauths=( \

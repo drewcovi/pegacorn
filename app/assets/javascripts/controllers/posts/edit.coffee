@@ -16,12 +16,9 @@ App.PostsEditController = Em.ObjectController.extend
     if window.confirm('Are you sure you want to delete?')
       @content.deleteRecord()
       @transaction.commit()
-      console.log 'deleting post'
       @content.one 'didDelete', ()=>
-        console.log 'did delete post'
         @content.destroy()
         @transitionToRoute 'posts.index'
-        # @transaction.commit()
     else
       @transaction.rollback()
       @transitionToRoute 'posts.edit', @content
