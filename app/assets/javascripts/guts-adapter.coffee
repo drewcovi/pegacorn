@@ -13,7 +13,7 @@ DS.GUTSSerializer = DS.JSONSerializer.extend
 DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
 
   findWorkauths: (user, name, process) ->
-    # token = user.tcsToken
+    # token = user.gutsToken
     # ldap = "#{ user.ldap }@clockwork.net"
     $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
       (data, status, jqxhr)->
