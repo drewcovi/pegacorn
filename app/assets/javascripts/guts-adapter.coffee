@@ -1,4 +1,4 @@
-# url = 'https://guts.clockwork.net/tcs/?action=get_work_auths_json'
+url = 'https://guts.clockwork.net/tcs/?action=get_work_auths_json'
 token = '01b82f2e4ce42ad2ad8d79978a7f272c'
 ldap = 'drew'
 
@@ -8,15 +8,22 @@ Array::unique = (identifier)->
   console.log output
   value for key, value of output
 
-DS.GUTSSerializer = DS.JSONSerializer.extend
+DS.GUTSSerializer = DS.JSONSerializer.extend()
 
 DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
+  
+  # serializer: DS.GUTSSerializer.create()
+  
+  # url: "https://guts.clockwork.net/tcs/?action=get_work_auths_json"
+
   init: ->
     console.log 'initializing guts adapter'
-  findWorkauths: (user, name, process) ->
+  
+  findAll: (store, type) ->
     # token = user.tcsToken
     # ldap = "#{ user.ldap }@clockwork.net"
-    console.log('finding workauths using guts api', user, name, process)
+    console.log('finding workauths using guts api', store, type)
+    return;
     $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
       (data, status, jqxhr)->
         workauths=( \
@@ -26,6 +33,18 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
           due:workauth.work_auth_due_date \
           for workauth in data).unique gutsId
         process(workauths).load()
+
+  find: (store, type, id) ->
+    console.log('finding workauths by id', store, type, id)
+
+  findQuery: (store, type, query, recordArray) ->
+    console.log('find query')
+
+  query: (records, query) ->
+    console.log('query')
+
+  findMany: (store, type, ids) ->
+    console.log('finding many')
 
   findProjects: (user, name, process) ->
     # token = user.tcsToken

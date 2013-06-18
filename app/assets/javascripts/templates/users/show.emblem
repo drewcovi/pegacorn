@@ -5,7 +5,8 @@ if App.Auth.signedIn
     firstName
     '
     lastName
-  render 'workauths/index'
+  each controller.workauths
+    li name
   linkTo users.edit this class='btn btn-warning'
     | edit
   '
@@ -13,3 +14,5 @@ if App.Auth.signedIn
     | Back to users list
 else
   | You need to sign in first
+
+controller.workauths.length

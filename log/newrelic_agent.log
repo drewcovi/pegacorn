@@ -2132,3 +2132,18 @@ Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
 [06/12/13 15:26:12 -0500 Drews-MacBook-Pro.local (3393)] INFO : Installing Rails 3.1/3.2 view instrumentation
 [06/12/13 15:26:12 -0500 Drews-MacBook-Pro.local (3393)] INFO : Installing Rails3 Error instrumentation
 [06/12/13 15:26:12 -0500 Drews-MacBook-Pro.local (3393)] INFO : Finished instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Starting the New Relic agent in "development" environment.
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Reading configuration from config/newrelic.yml
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Environment: development
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Dispatcher: unicorn
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] WARN : Agent configured not to send data in this environment.
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing ActiveRecord instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing Net instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing Unicorn instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing Rails 3 Controller instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Installing Rails3 Error instrumentation
+[06/17/13 14:19:54 -0500 Drews-MacBook-Pro.local (5995)] INFO : Finished instrumentation
