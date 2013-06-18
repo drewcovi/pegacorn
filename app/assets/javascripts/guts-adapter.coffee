@@ -15,7 +15,7 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
   serializer: DS.GUTSSerializer.create()
   
   # url: "https://guts.clockwork.net/tcs/?action=get_work_auths_json"
-
+  
   init: ->
     this._super.apply this, arguments
     console.log 'initializing guts adapter'
@@ -53,8 +53,6 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
   
     query: (records, query) ->
     console.log('query')
-
-
 
   # findProjects: (user, name, process) ->
   #   # token = user.tcsToken
