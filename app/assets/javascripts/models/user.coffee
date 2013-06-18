@@ -13,7 +13,8 @@ App.User = DS.Model.extend
   projects: DS.hasMany 'App.Project'
   managedProjects: DS.hasMany 'App.Project'
   tasks: DS.hasMany 'App.Task'
-  workauths: DS.hasMany 'App.Workauth'
+  workauths: DS.hasMany 'App.Workauth',
+    inverse: 'worker'
   gutsToken: DS.attr 'string'
   ldap: DS.attr 'string'
   roles: DS.hasMany 'App.Role'

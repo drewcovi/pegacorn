@@ -10,3 +10,7 @@ App.Router.map ->
     @route 'show', {path: '/:user_id'}
     @route 'edit', {path: '/:user_id/edit'}
     @route 'new', {path: '/new'}
+  @resource 'workauths', ->
+    @route 'show', {path: '/:workauth_id'}
+    @route 'edit', {path: '/:workauth_id/edit'}
+    @route 'new', {path: '/new'}

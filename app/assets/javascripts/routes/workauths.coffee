@@ -1,6 +1,6 @@
 App.WorkauthsRoute = Em.Route.extend
   model: ->
-      App.Workauths.find()
+      App.Workauth.find()
 
 App.WorkauthRoute = App.WorkauthsRoute.extend 
   model: (param) ->
