@@ -8,13 +8,22 @@ Array::unique = (identifier)->
   console.log output
   value for key, value of output
 
-DS.GUTSSerializer = DS.JSONSerializer.extend
+DS.GUTSSerializer = DS.JSONSerializer.extend()
 
-DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
-
-  findWorkauths: (user, name, process) ->
-    # token = user.gutsToken
+DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
+  
+  # serializer: DS.GUTSSerializer.create()
+  
+  # url: "https://guts.clockwork.net/tcs/?action=get_work_auths_json"
+  
+  init: ->
+    console.log 'initializing guts adapter'
+  
+  findAll: (store, type) ->
+    # token = user.tcsToken
     # ldap = "#{ user.ldap }@clockwork.net"
+    console.log('finding workauths using guts api', store, type)
+    return;
     $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
       (data, status, jqxhr)->
         workauths=( \
@@ -25,35 +34,47 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
           for workauth in data).unique gutsId
         process(workauths).load()
 
-  findProjects: (user, name, process) ->
-    # token = user.tcsToken
-    # ldap = "#{ user.ldap }@clockwork.net"
-    $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
-      (data, status, jqxhr)->
-        projects=( \
-          gutsId:workauth.project_id, \
-          name:workauth.project_name \
-          for workauth in data).unique gutsId
-        process(projects).load()
+  find: (store, type, id) ->
+    console.log('finding workauths by id', store, type, id)
 
-  findTasks: (user, name, process) ->
-    # token = user.tcsToken
-    # ldap = "#{ user.ldap }@clockwork.net"
-    $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
-      (data, status, jqxhr)->
-        tasks=( \
-          gutsId:workauth.task_id, \
-          name:workauth.task_name \
-          for workauth in data).unique gutsId
-        process(tasks).load()
+  findQuery: (store, type, query, recordArray) ->
+    console.log('find query')
 
-  findClients: (user, name, process) ->
-    # token = user.tcsToken
-    # ldap = "#{ user.ldap }@clockwork.net"
-    $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
-      (data, status, jqxhr)->
-        clients=( \
-          gutsId:workauth.client_id, \
-          name:workauth.client_name \
-          for workauth in data).unique gutsId
-        process(clients).load()
+  query: (records, query) ->
+    console.log('query')
+
+  findMany: (store, type, ids) ->
+    console.log('finding many')
+
+  # findProjects: (user, name, process) ->
+  #   # token = user.tcsToken
+  #   # ldap = "#{ user.ldap }@clockwork.net"
+  #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
+  #     (data, status, jqxhr)->
+  #       projects=( \
+  #         gutsId:workauth.project_id, \
+  #         name:workauth.project_name \
+  #         for workauth in data).unique gutsId
+  #       process(projects).load()
+
+  # findTasks: (user, name, process) ->
+  #   # token = user.tcsToken
+  #   # ldap = "#{ user.ldap }@clockwork.net"
+  #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
+  #     (data, status, jqxhr)->
+  #       tasks=( \
+  #         gutsId:workauth.task_id, \
+  #         name:workauth.task_name \
+  #         for workauth in data).unique gutsId
+  #       process(tasks).load()
+
+  # findClients: (user, name, process) ->
+  #   # token = user.tcsToken
+  #   # ldap = "#{ user.ldap }@clockwork.net"
+  #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
+  #     (data, status, jqxhr)->
+  #       clients=( \
+  #         gutsId:workauth.client_id, \
+  #         name:workauth.client_name \
+  #         for workauth in data).unique gutsId
+  #       process(clients).load()

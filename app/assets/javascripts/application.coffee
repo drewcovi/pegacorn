@@ -10,5 +10,6 @@
 #= require guts-adapter
 #= require app
 #= require_tree .
+
 window.App = Em.Application.create
     LOG_TRANSITIONS: true

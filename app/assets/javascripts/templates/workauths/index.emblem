@@ -1,0 +1,9 @@
+table.table.table-striped
+  tbody
+  each controller
+    tr
+      td
+        breadcrumb
+
+' fooo
+hr

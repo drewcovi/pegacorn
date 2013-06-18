@@ -23,6 +23,7 @@ DS.LSSerializer = DS.JSONSerializer.extend(
     rootedJSON[root] = json
     rootedJSON
 )
+
 DS.LSAdapter = DS.Adapter.extend(Ember.Evented,
   init: ->
     @_loadData()

@@ -16,3 +16,4 @@ App.User = DS.Model.extend
   workauths: DS.hasMany 'App.Workauth'
   gutsToken: DS.attr 'string'
   ldap: DS.attr 'string'
+  roles: DS.hasMany 'App.Role'
