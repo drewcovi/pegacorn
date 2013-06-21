@@ -40,6 +40,7 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
             else workauth.work_auth_name), \
           hours:workauth.work_auth_hours, \
           due:workauth.work_auth_date_due \
+          # worker: App.Auth.get('user') \
           for workauth in data).unique 'gutsId'
         workauths = 
           workauths : workauths

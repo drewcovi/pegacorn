@@ -1,4 +1,4 @@
-App.PostsNewController = Em.ObjectController.extend
+App.PostsNewController = App.PostController.extend
   save: ->
     @store.commit()
     @content.addObserver 'id', @, 'afterSave'

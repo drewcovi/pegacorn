@@ -1,1 +1,1 @@
-App.UsersIndexController = Em.ArrayController.extend()
+App.UsersIndexController = App.UsersController.extend()

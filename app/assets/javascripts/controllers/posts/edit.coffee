@@ -1,4 +1,4 @@
-App.PostsEditController = Em.ObjectController.extend
+App.PostsEditController = App.PostController.extend
   save: ->
     @store.commit()
     @transitionToRoute 'posts.show', @content

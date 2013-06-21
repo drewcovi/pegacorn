@@ -1,3 +1,5 @@
+h1 Workauths for #{userName}
+
 table.table.table-striped
   tbody
   each controller
