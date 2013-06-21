@@ -1,11 +1,8 @@
-url = 'https://guts.clockwork.net/tcs/?action=get_work_auths_json'
-token = '01b82f2e4ce42ad2ad8d79978a7f272c'
-ldap = 'drew'
+url = 'https://mattgutsviz.dev.clockwork.net/tcs_connector/?action='
 
 Array::unique = (identifier)->
   output = {}
   output[@[key][identifier]] = @[key] for key in [0...@length]
-  console.log output
   value for key, value of output
 
 DS.GUTSSerializer = DS.JSONSerializer.extend()
@@ -13,8 +10,6 @@ DS.GUTSSerializer = DS.JSONSerializer.extend()
 DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
   
   serializer: DS.GUTSSerializer.create()
-  
-  # url: "https://guts.clockwork.net/tcs/?action=get_work_auths_json"
   
   init: ->
     this._super.apply this, arguments
@@ -24,11 +19,13 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
     console.log('finding workauths by id', store, type, id)
 
   findAll: (store, type) ->
-    # token = user.tcsToken
-    # ldap = "#{ user.ldap }@clockwork.net"
-    console.log('finding workauths using guts api', store, type)
+    return if !App.Auth.get('user')
+    method = 'get_work_auths_json'
+    adapter = @
+    token = App.Auth.get('user').get('gutsToken')
+    ldap = App.Auth.get('user').get('ldap')
     $.ajax
-      url: url, 
+      url: url+method, 
       data: 
         ldap_username: ldap,
         ldap_auth_token: token,
@@ -37,14 +34,18 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
       success: (data, status, jqxhr)->
         workauths=( \
           gutsId:workauth.work_auth_id, \
-          name:workauth.work_auth_name, \
+          name: ( \
+            if Em.isEmpty workauth.work_auth_name \
+            then workauth.project_name \
+            else workauth.work_auth_name), \
           hours:workauth.work_auth_hours, \
-          due:workauth.work_auth_due_date \
-          for workauth in data).unique gutsId
-        console.log workauths
-        process(workauths).load()
+          due:workauth.work_auth_date_due \
+          for workauth in data).unique 'gutsId'
+        workauths = 
+          workauths : workauths
+        adapter.didFindAll store, type, workauths
       error: (request, status, error)->
-        console.log 'error', request, status, error
+        # console.log 'error', request, status, error
   findQuery: (store, type, query, recordArray) ->
     console.log('find query')
 
@@ -54,9 +55,8 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
     query: (records, query) ->
     console.log('query')
 
+  # redacted sync adapter.
   # findProjects: (user, name, process) ->
-  #   # token = user.tcsToken
-  #   # ldap = "#{ user.ldap }@clockwork.net"
   #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
   #     (data, status, jqxhr)->
   #       projects=( \
@@ -66,8 +66,6 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
   #       process(projects).load()
 
   # findTasks: (user, name, process) ->
-  #   # token = user.tcsToken
-  #   # ldap = "#{ user.ldap }@clockwork.net"
   #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
   #     (data, status, jqxhr)->
   #       tasks=( \
@@ -77,8 +75,6 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
   #       process(tasks).load()
 
   # findClients: (user, name, process) ->
-  #   # token = user.tcsToken
-  #   # ldap = "#{ user.ldap }@clockwork.net"
   #   $.getJSON url, ldap_username: ldap, ldap_auth_token: token, \
   #     (data, status, jqxhr)->
   #       clients=( \

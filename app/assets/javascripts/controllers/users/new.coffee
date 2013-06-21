@@ -1,4 +1,4 @@
-App.UsersNewController = Em.ObjectController.extend
+App.UsersNewController = App.UserController.extend
   save: ->
     @store.commit()
     @content.addObserver 'id', @, 'afterSave'

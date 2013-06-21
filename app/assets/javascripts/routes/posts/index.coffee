@@ -1,3 +1,1 @@
-App.PostsIndexRoute = Em.Route.extend
-  model: ->
-    App.Post.find()
+App.PostsIndexRoute = App.PostsRoute.extend()

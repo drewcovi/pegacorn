@@ -5,4 +5,4 @@ App.WorkauthsRoute = Em.Route.extend
 App.WorkauthRoute = App.WorkauthsRoute.extend 
   model: (param) ->
     if App.Auth.get('signedIn')
-      App.Workauth.find(param.user)
+      App.Workauth.find(param.workauth_id)

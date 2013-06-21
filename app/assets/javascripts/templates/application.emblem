@@ -11,6 +11,10 @@
             li    
               linkTo users.index
                 | Users list
+          if App.Auth.signedIn
+            li    
+              linkTo workauths.index
+                | Current Workauths
 
 .container-fluid#main
   .content

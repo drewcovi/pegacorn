@@ -3,7 +3,6 @@ table.table.table-striped
   each controller
     tr
       td
-        breadcrumb
-
-' fooo
+        linkTo workauths.show this
+          name
 hr

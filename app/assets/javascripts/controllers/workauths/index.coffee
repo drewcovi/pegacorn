@@ -1,1 +1,0 @@
-App.WorkauthsIndexController = Em.ArrayController.extend()

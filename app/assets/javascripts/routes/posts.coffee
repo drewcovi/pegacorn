@@ -7,5 +7,4 @@ App.PostRoute = App.PostsRoute.extend
     post_id: model.get('param')
 
   model: (param) ->
-    if App.Auth.get('signedIn')
-      App.Post.find(param.post_id)
+    App.Post.find(param.post_id)

@@ -8,6 +8,7 @@ form
     Ember.TextField valueBinding="firstName"
     label Last Name
     Ember.TextField valueBinding="lastName"
+  if isCurrent  
     label Guts Token
     Ember.TextField valueBinding="gutsToken"
     label Ldap Username

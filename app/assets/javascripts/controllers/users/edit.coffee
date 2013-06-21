@@ -1,4 +1,4 @@
-App.UsersEditController = Em.ObjectController.extend
+App.UsersEditController = App.UserController.extend
   save: ->
     @store.commit()
     @transitionToRoute 'users.show', @content

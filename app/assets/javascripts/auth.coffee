@@ -5,6 +5,8 @@ App.Auth = Em.Auth.create
   tokenKey: 'auth_token'
   tokenIdKey: 'user_id'
 
+  userModel: 'App.User'
+
   modules: ['emberData', 'rememberable']
 
   rememberable:

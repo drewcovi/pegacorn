@@ -1,3 +1,1 @@
-App.PostsShowRoute = Em.Route.extend
-  serialize: (model) ->
-    post_id: model.get 'param'
+# App.PostsShowRoute = Em.PostRoute.extend()

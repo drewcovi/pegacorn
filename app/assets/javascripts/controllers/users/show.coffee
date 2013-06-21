@@ -1,1 +1,1 @@
-App.UsersShowController = Em.ObjectController.extend()
+App.UsersShowController = App.UserController.extend()
