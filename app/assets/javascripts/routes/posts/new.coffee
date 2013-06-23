@@ -1,6 +1,3 @@
-App.PostsNewRoute = App.PostsRoute.extend
+App.PostsNewRoute = App.PostRoute.extend
   model: ->
     App.Post.createRecord()
-  setupController: (controller, model) ->
-    @_super()
-    controller.set('content', model)

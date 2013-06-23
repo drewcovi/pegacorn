@@ -1,1 +1,1 @@
-# App.UsersShowRoute = App.UserRoute.extend()
+App.UsersShowRoute = App.UserRoute.extend()

@@ -4,20 +4,17 @@ App.PostsEditController = App.PostController.extend
     @transitionToRoute 'posts.show', @content
 
   cancel: ->
-    if @content.isDirty
+    if @content.get 'isDirty'
       @content.rollback()
-      console.log 'cancelled'
     @transitionToRoute 'posts.index'
 
   destroy: ->
     @transaction = @store.transaction()
-    console.log @transaction
-    @transaction.add( @content )
-    if window.confirm('Are you sure you want to delete?')
+    @transaction.add @content
+    if window.confirm 'Are you sure you want to delete?'
       @content.deleteRecord()
       @transaction.commit()
       @content.one 'didDelete', ()=>
-        @content.destroy()
         @transitionToRoute 'posts.index'
     else
       @transaction.rollback()

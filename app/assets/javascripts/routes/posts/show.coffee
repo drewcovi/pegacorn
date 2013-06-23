@@ -1,1 +1,1 @@
-# App.PostsShowRoute = Em.PostRoute.extend()
+App.PostsShowRoute = App.PostRoute.extend()

@@ -8,3 +8,7 @@ App.PostRoute = App.PostsRoute.extend
 
   model: (param) ->
     App.Post.find(param.post_id)
+
+  setupController: (controller, model) ->
+    @_super()
+    controller.set('content', model)

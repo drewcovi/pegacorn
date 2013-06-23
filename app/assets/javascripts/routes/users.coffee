@@ -8,6 +8,7 @@ App.UserRoute = App.UsersRoute.extend
   serialize: (model) ->
     user_id: model.get('param')
 
-  model: (param) ->
+  model: (params) ->
     if App.Auth.get('signedIn')
-      App.User.find(param.user_id)
+      console.log(params)
+      App.User.find(params.user_id)
