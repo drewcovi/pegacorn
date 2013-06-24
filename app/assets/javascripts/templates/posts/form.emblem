@@ -2,5 +2,7 @@ form
   div
     label Title
     Ember.TextField valueBinding="title"
+    label Permalink
+    Ember.TextField valueBinding="permalink"
     label Body
     Ember.TextArea valueBinding="body"

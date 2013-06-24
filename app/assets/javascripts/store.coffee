@@ -13,3 +13,5 @@ App.Store.registerAdapter 'App.User', DS.RESTAdapter.create
 
 App.Store.registerAdapter 'App.Workauth', DS.GUTSAdapter.create
   url: "https://guts.clockwork.net/tcs/?action=get_work_auths_json"
+  primaryKey: (type) ->
+    'gutsId' if type is 'App.Workauth'

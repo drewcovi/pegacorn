@@ -1,5 +1,6 @@
 App.WorkauthsRoute = Em.Route.extend
   model: ->
+    if App.Auth.get('signedIn')
       App.Workauth.find()
 
 App.WorkauthRoute = App.WorkauthsRoute.extend 

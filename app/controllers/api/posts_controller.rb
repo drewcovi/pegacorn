@@ -5,23 +5,32 @@ module Api
     end
 
     def show
-      render json: Post.find(params[:id])
+      render json: Post.find_by_permalink(params[:id])
     end
 
     def destroy
       post = Post.find(params[:id])
       post.destroy
-      render json: post
+      if post.destroy
+        render json: post, status: 204
+      else
+        render json: post
+      end
     end
 
     def update
       post = Post.find(params[:id])
       # post.update_attributes(params[:post])
-      post.update_attributes(
+      updated = post.update_attributes(
         :title => params[:post][:title],
-        :body => params[:post][:body]
+        :body => params[:post][:body],
+        :permalink => params[:post][:permalink]
       )
-      render json: post
+      if updated
+        render json: post
+      else
+        render json: post, status: 422
+      end
     end
 
     def new
@@ -31,7 +40,8 @@ module Api
     def create
       post = Post.create!(
         :title => params[:post][:title],
-        :body => params[:post][:body]
+        :body => params[:post][:body],
+        :permalink => params[:post][:permalink]
       )
       render json: post
     end

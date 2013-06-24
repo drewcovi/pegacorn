@@ -1,10 +1,1 @@
-h1 Workauths for #{userName}
-
-table.table.table-striped
-  tbody
-  each controller
-    tr
-      td
-        linkTo workauths.show this
-          name
-hr
+h2 select a workauth

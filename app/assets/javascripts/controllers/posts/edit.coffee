@@ -20,6 +20,9 @@ App.PostsEditController = App.PostController.extend
       @transaction.rollback()
       @transitionToRoute 'posts.edit', @content
 
+  # permalink: ->
+  #   @get('permalink')
+
   headerTitle: 'Edit'
   buttonTitle: 'Update'
 

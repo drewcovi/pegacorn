@@ -4,6 +4,8 @@ App.UsersEditController = App.UserController.extend
     @transitionToRoute 'users.show', @content
 
   cancel: ->
+    @transaction = @store.transaction()
+    @transaction.add @content
     if @content.get 'isDirty'
       @content.rollback()
     @transitionToRoute 'users.index'

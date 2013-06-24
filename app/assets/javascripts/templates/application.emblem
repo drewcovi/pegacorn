@@ -17,10 +17,7 @@
                 | Current Workauths
 
 .container-fluid#main
-  .content
-    .row-fluid
-      .span12
-        .page-header
-          outlet
+  .row-fluid
+    outlet
 
 

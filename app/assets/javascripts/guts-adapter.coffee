@@ -16,7 +16,7 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
     console.log 'initializing guts adapter'
   
   find: (store, type, id) ->
-    console.log('finding workauths by id', store, type, id)
+    console.log 'finding workauths by id', store, type, id
 
   findAll: (store, type) ->
     return if !App.Auth.get('user')
@@ -24,6 +24,7 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
     adapter = @
     token = App.Auth.get('user').get('gutsToken')
     ldap = App.Auth.get('user').get('ldap')
+    console.log token, ldap, App.Auth.get('user')
     $.ajax
       url: url+method, 
       data: 
@@ -33,20 +34,19 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
       dataType: 'json',
       success: (data, status, jqxhr)->
         workauths=( \
-          gutsId:workauth.work_auth_id, \
+          id:workauth.work_auth_id, \
           name: ( \
             if Em.isEmpty workauth.work_auth_name \
             then workauth.project_name \
             else workauth.work_auth_name), \
           hours:workauth.work_auth_hours, \
           due:workauth.work_auth_date_due \
-          # worker: App.Auth.get('user') \
-          for workauth in data).unique 'gutsId'
+          for workauth in data).unique 'id'
         workauths = 
           workauths : workauths
         adapter.didFindAll store, type, workauths
       error: (request, status, error)->
-        # console.log 'error', request, status, error
+        adapter.didError store, type, null, request
   findQuery: (store, type, query, recordArray) ->
     console.log('find query')
 

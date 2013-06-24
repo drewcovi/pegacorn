@@ -1,11 +1,1 @@
-table.table.table-striped
-  tbody
-  each controller
-    tr
-      td
-        linkTo users.show this
-          email
-      td
-        linkTo users.edit this class='btn btn-warning' | edit
-
-linkTo users.new class='btn btn-primary' | Add New User
+h2 select a user

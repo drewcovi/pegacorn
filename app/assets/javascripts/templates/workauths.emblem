@@ -1,4 +1,15 @@
 if App.Auth.signedIn
-  outlet
+  .span4
+    h1 Workauths
+    table.table.table-striped
+      tbody
+      each controller
+        tr
+          td
+            linkTo workauths.show this
+              name
+
+  .span7
+    outlet
 else
   | You need to sign in first

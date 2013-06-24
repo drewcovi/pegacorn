@@ -10,5 +10,4 @@ App.UserRoute = App.UsersRoute.extend
 
   model: (params) ->
     if App.Auth.get('signedIn')
-      console.log(params)
       App.User.find(params.user_id)

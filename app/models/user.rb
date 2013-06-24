@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
           :password_confirmation, :remember_me, :ldap, :guts_token
  
   validates :email, presence: true
+  
+  def to_param
+     permalink
+  end
 end
