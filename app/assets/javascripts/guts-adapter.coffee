@@ -7,7 +7,7 @@ Array::unique = (identifier)->
 
 DS.GUTSSerializer = DS.JSONSerializer.extend()
 
-DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
+DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
   
   serializer: DS.GUTSSerializer.create()
   
@@ -31,7 +31,6 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
         ldap_username: ldap,
         ldap_auth_token: token,
       type: 'post',
-      dataType: 'json',
       success: (data, status, jqxhr)->
         workauths=( \
           id:workauth.work_auth_id, \
@@ -46,7 +45,28 @@ DS.GUTSAdapter = DS.RESTAdapter.extend Ember.Evented,
           workauths : workauths
         adapter.didFindAll store, type, workauths
       error: (request, status, error)->
-        adapter.didError store, type, null, request
+        # adapter.didError store, type, {}, request
+        Em.assert("Unable to find records for model type "+type.toString(), error);
+    # this.ajax(
+    #   url+method,
+    #   'get',
+    #     ldap_username: ldap,
+    #     ldap_auth_token: token
+    # ).then((data)->
+    #     workauths=( \
+    #       id:workauth.work_auth_id, \
+    #       name: ( \
+    #         if Em.isEmpty workauth.work_auth_name \
+    #         then workauth.project_name \
+    #         else workauth.work_auth_name), \
+    #       hours:workauth.work_auth_hours, \
+    #       due:workauth.work_auth_date_due \
+    #       for workauth in data).unique 'id'
+    #     workauths = 
+    #       workauths : workauths
+    #     adapter.didFindAll store, type, workauths
+    # ).()-> null, DS.rejectionHAndler
+
   findQuery: (store, type, query, recordArray) ->
     console.log('find query')
 

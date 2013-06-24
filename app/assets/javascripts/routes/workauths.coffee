@@ -7,6 +7,5 @@ App.WorkauthRoute = App.WorkauthsRoute.extend
   model: (param) ->
     if App.Auth.get('signedIn')
       App.Workauth.find(param.workauth_id)
-      
   serialize: (model) ->
-    workauth_id: model.get 'gutsId'
+    workauth_id: model.get 'id'

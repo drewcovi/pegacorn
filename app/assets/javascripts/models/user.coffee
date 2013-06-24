@@ -7,9 +7,6 @@ App.User = DS.Model.extend
     "#{@get('firstName')} #{@get('lastName')}"
     ).property('firstName', 'lastName')
   param: DS.attr 'string'
-  # param: (->
-  #   "#{@get('id')}-#{@get('email').split('@')[0]}"
-  #   ).property('email')
   projects: DS.hasMany 'App.Project'
   managedProjects: DS.hasMany 'App.Project'
   tasks: DS.hasMany 'App.Task'
