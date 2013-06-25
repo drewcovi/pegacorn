@@ -19,11 +19,15 @@ App.Router.map ->
       path: '/new'
   @resource 'users', ->
     @route 'show',
-      path: '/:user_id'
+      path: '/:user_id', ->
     @route 'edit',
       path: '/:user_id/edit'
     @route 'new',
       path: '/new'
+  @resource 'users',
+    path: '/users/:user_id', ->
+      @resource 'worakuths',
+      path: '/workauths'
   @resource 'workauths', ->
     @route 'show',
       path: '/:workauth_id'

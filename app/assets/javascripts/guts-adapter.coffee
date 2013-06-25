@@ -19,20 +19,20 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
     console.log 'finding workauths by id', store, type, id
 
   findAll: (store, type) ->
-    return if !App.Auth.get('user')
+    return if !App.Auth.get('user').get('ldap')
     method = 'get_work_auths_json'
     adapter = @
     token = App.Auth.get('user').get('gutsToken')
     ldap = App.Auth.get('user').get('ldap')
     console.log token, ldap, App.Auth.get('user')
-    $.ajax
+    $.ajax(
       url: url+method, 
       data: 
         ldap_username: ldap,
         ldap_auth_token: token,
-      type: 'post',
-      success: (data, status, jqxhr)->
-        workauths=( \
+      type: 'post'
+    ).done( (data) ->
+      workauths=( \
           id:workauth.work_auth_id, \
           name: ( \
             if Em.isEmpty workauth.work_auth_name \
@@ -41,12 +41,13 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
           hours:workauth.work_auth_hours, \
           due:workauth.work_auth_date_due \
           for workauth in data).unique 'id'
-        workauths = 
-          workauths : workauths
-        adapter.didFindAll store, type, workauths
-      error: (request, status, error)->
+      workauths = 
+        workauths : workauths
+      adapter.didFindAll store, type, workauths
+    ).fail( (request, status) ->
         # adapter.didError store, type, {}, request
-        Em.assert("Unable to find records for model type "+type.toString(), error);
+      Em.assert("Unable to find records for model type "+type.toString(), error);
+    )
     # this.ajax(
     #   url+method,
     #   'get',

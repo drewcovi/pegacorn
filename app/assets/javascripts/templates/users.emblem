@@ -1,6 +1,7 @@
 if App.Auth.signedIn
   .span4
     h1 Users
+    controller
     table.table.table-striped
       tbody
       each controller
