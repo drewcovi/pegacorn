@@ -5,19 +5,13 @@
       .nav-collapse.collapse
         ul.nav
           li class={isHome:active}
-              linkTo posts.index
+              linkTo 'posts.index'
                 | Posts list
           if App.Auth.signedIn
             li    
-              linkTo users.index
+              linkTo 'users.index'
                 | Users list
-          if App.Auth.signedIn
-            li    
-              linkTo workauths.index
-                | Current Workauths
 
 .container-fluid#main
   .row-fluid
     outlet
-
-

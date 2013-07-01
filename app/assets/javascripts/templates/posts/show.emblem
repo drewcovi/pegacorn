@@ -2,8 +2,8 @@ h1
   = title
 p
   = body
-linkTo posts.index
+linkTo 'posts.index'
   | Back to posts list
 '
-linkTo posts.edit this class='btn btn-warning'
+linkTo 'posts.edit' this class='btn btn-warning'
   | Edit this post

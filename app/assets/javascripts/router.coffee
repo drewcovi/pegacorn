@@ -5,9 +5,8 @@ Em.Route.reopen
   activate: ->
     @_super()
     document.title = this.routeName
-    # document.title = this \
-    #                   .controllerFor('title') \
-    #                   .get('dictionary.#{@routeName}')
+
+# App.LoadingRoute = Ember.Route.extend({});
 
 App.Router.map ->
   @resource 'posts', ->
@@ -19,19 +18,15 @@ App.Router.map ->
       path: '/new'
   @resource 'users', ->
     @route 'show',
-      path: '/:user_id', ->
+      path: '/:user_id'
     @route 'edit',
       path: '/:user_id/edit'
     @route 'new',
       path: '/new'
-  @resource 'users',
-    path: '/users/:user_id', ->
-      @resource 'worakuths',
-      path: '/workauths'
-  @resource 'workauths', ->
-    @route 'show',
-      path: '/:workauth_id'
-    @route 'edit',
-      path: '/:workauth_id/edit'
-    @route 'new',
-      path: '/new'
+    @resource 'workauths',
+      path: '/:user_id/workauths'
+  # @resource 'user',
+  #   path: '/users/:user_id', ->
+  #     @resource 'workauths',
+  #       path: '/workauths'
+

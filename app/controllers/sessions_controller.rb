@@ -15,6 +15,8 @@ class SessionsController < Devise::SessionsController
     resource.ensure_authentication_token!
     data = {
       user_id: resource.id,
+      guts_token: resource.guts_token,
+      ldap: resource.ldap,
       auth_token: resource.authentication_token,
     }
     if params[:remember]

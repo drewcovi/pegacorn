@@ -1,7 +1,11 @@
 App.WorkauthsRoute = Em.Route.extend
+  setupController: ->
+    console.log 'setting up workauths controller'
   model: ->
     if App.Auth.get('signedIn')
       App.Workauth.find()
+  beforeModel: ->
+    
 
 App.WorkauthRoute = App.WorkauthsRoute.extend 
   model: (param) ->
@@ -9,3 +13,4 @@ App.WorkauthRoute = App.WorkauthsRoute.extend
       App.Workauth.find(param.workauth_id)
   serialize: (model) ->
     workauth_id: model.get 'id'
+    user_id: @controllerFor('user').get 'param'

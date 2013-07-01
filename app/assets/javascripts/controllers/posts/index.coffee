@@ -1,1 +1,1 @@
-App.PostsIndexController = App.PostsController.extend()
+# App.PostsIndexController = App.PostsController.extend()
