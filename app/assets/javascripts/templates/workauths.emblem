@@ -1,5 +1,6 @@
   .span4
     h1 Workauths for #{worker.firstName}
+    worker
     table.table.table-striped
       tbody
       each controller

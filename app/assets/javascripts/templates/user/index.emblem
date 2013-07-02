@@ -1,7 +1,10 @@
+controller
 if App.Auth.signedIn
   h1
     email
-  p #{fullName} #{if isCurrent} #{linkTo 'workauths' this | Workauths}
+  p #{fullName}
+  if isCurrent
+    linkTo 'workauths' this | Workauths
   if isCurrent
     label Guts Token
     Ember.TextField disabled="disabled" valueBinding="gutsToken"
