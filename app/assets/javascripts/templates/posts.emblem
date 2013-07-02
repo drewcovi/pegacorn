@@ -5,10 +5,10 @@
     each controller
       tr
         td
-          linkTo posts.show this
+          linkTo 'posts.show' this
             = title
         td
-          linkTo posts.edit this class='btn btn-warning' | edit
-  linkTo posts.new class='btn btn-primary' | Add New Post
+          linkTo 'posts.edit' this class='btn btn-warning' | edit
+  linkTo 'posts.new' class='btn btn-primary' | Add New Post
 .span7
   outlet

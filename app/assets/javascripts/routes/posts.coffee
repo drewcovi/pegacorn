@@ -1,14 +1,25 @@
 App.PostsRoute = Em.Route.extend
   model: ->
     App.Post.find()
-  # setupController: (controller, model) ->
-    # @controllerFor('application').set('currentRoute', 'posts')
 
 App.PostRoute = App.PostsRoute.extend
-  model: (param) ->
-    App.Post.find(param.post_id)    
+  model: (params) ->
+    App.Post.find(params.post_id)
+    # posts = App.Post.find
+    #   permalink: params.post_id
+
+    # posts.one 'didLoad', ->
+    #   posts.resolve posts.get 'firstObject'
+
+    # posts
+  events:
+    error: ->
+      console.log 'something went wrong on the backend'
+      @transitionTo('post.index')
+
   setupController: (controller, model) ->
     controller.set('content', model)
-    # @controllerFor('application').set('currentRoute', 'posts')
+
   serialize: (model) ->
-    post_id: model.get('permalink')
+    post_id: model.get('id')
+    # post_id: model.get('permalink')

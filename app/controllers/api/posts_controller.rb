@@ -1,11 +1,22 @@
 module Api
   class PostsController < BaseController
     def index
-      render json: Post.all
+      posts = Post.all
+      if posts
+        render json: posts
+      else
+        render status: 404
+      end
     end
 
     def show
-      render json: Post.find_by_permalink(params[:id])
+      # render json: Post.find_by_permalink(params[:id])
+      post = Post.find_by_id(params[:id])
+      if post
+        render json: post
+      else
+        render json: post, status: 404
+      end
     end
 
     def destroy

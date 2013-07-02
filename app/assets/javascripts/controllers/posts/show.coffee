@@ -1,1 +1,1 @@
-App.PostsShowController = App.PostController.extend()
+# App.PostsShowController = App.PostController.extend()
