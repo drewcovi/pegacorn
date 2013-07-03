@@ -1,15 +1,18 @@
 if App.Auth.signedIn
   h1
     email
-  p #{fullName} #{if isCurrent} #{linkTo 'workauths' this | Workauths}
+  p #{fullName}
+  if isCurrent
+    linkTo 'workauths' this | Workauths
   if isCurrent
     label Guts Token
     Ember.TextField disabled="disabled" valueBinding="gutsToken"
     label Ldap Username
     Ember.TextField disabled="disabled" valueBinding="ldap"
   
+  / template 'workauths'
   hr
-  linkTo 'users.edit' this class='btn btn-warning'
+  linkTo 'user.edit' this class='btn btn-warning'
     | edit
   '
   linkTo 'users.index'

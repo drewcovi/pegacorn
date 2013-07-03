@@ -2,18 +2,16 @@ App.UsersRoute = Em.Route.extend
     model: ->
       if App.Auth.get('signedIn')
         App.User.find()
-    setupController: (controller, model) ->
-      @_super controller, model
-      # console.log(model.get('length'))
-      # @controllerFor('user').set ''
+    # setupController: (controller, model) ->
+    #   @_super controller, model
 
-App.UserRoute = App.UsersRoute.extend
+App.UserRoute = Em.Route.extend
   serialize: (model) ->
     user_id: model.get('id')
 
   model: (params) ->
     if App.Auth.get('signedIn')
-      console.log(params)
+      console.log('user params are', params)
       App.User.find(params.user_id)
             
   # setupController: (controller, model) ->

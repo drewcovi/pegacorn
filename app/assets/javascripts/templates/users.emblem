@@ -1,1 +1,18 @@
-outlet
+if App.Auth.signedIn
+  .span4
+    h1 Users
+    table.table.table-striped
+      tbody
+      each content
+        tr
+          td
+            linkTo 'user.show' this
+              email
+          td
+            / linkTo 'user.edit' this class='btn btn-warning' | edit
+
+    linkTo 'users.new' class='btn btn-primary' | Add New User
+  .span7
+    outlet
+else
+  | You need to sign in first

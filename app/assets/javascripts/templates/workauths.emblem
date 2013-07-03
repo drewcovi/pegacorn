@@ -1,13 +1,10 @@
-  .span4
-    h1 Workauths for #{worker.firstName}
-    worker
-    table.table.table-striped
-      tbody
-      each controller
-        tr
-          td
-            linkTo workauths.show this
-              name
+h1 Workauths for #{worker.firstName}
+worker
+table.table.table-striped
+  tbody
+  each controller
+    tr
+      td
+        linkTo workauths.show this
+          name
 
-  .span7
-    outlet

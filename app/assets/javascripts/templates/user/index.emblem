@@ -12,7 +12,7 @@ if App.Auth.signedIn
     Ember.TextField disabled="disabled" valueBinding="ldap"
   
   hr
-  linkTo 'users.edit' this class='btn btn-warning'
+  linkTo 'user.edit' this class='btn btn-warning'
     | edit
   '
   linkTo 'users.index'

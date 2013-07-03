@@ -1,6 +1,6 @@
 App.WorkauthsController = Em.ArrayController.extend
   worker: null
-  needs: 'users'
-  workerBinding: 'controllers.users.content'
+  needs: 'usersShow'
+  workerBinding: 'controllers.usersShow'
   init: ->
     console.log this, @worker, @worker.get 'content'
