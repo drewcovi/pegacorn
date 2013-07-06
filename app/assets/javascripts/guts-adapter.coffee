@@ -1,5 +1,3 @@
-url = 'https://mattgutsviz.dev.clockwork.net/tcs_connector/?action='
-
 Array::unique = (identifier)->
   output = {}
   output[@[key][identifier]] = @[key] for key in [0...@length]
@@ -13,7 +11,6 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
   
   init: ->
     this._super.apply this, arguments
-    console.log 'initializing guts adapter'
   
   find: (store, type, id) ->
     console.log 'finding workauths by id', store, type, id
@@ -24,7 +21,7 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
     adapter = @
     token = App.Auth.get('user').get('gutsToken')
     ldap = App.Auth.get('user').get('ldap')
-    console.log token, ldap, App.Auth.get('user')
+    url = this.url
     $.ajax(
       url: url+method, 
       data: 
@@ -39,34 +36,17 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
             then workauth.project_name \
             else workauth.work_auth_name), \
           hours:workauth.work_auth_hours, \
-          due:workauth.work_auth_date_due \
+          due:workauth.work_auth_date_due, \
+          worker: App.Auth.get('userId') \
           for workauth in data).unique 'id'
       workauths = 
         workauths : workauths
+      # console.log workauths
       adapter.didFindAll store, type, workauths
     ).fail( (request, status) ->
         # adapter.didError store, type, {}, request
       Em.assert("Unable to find records for model type "+type.toString(), error);
     )
-    # this.ajax(
-    #   url+method,
-    #   'get',
-    #     ldap_username: ldap,
-    #     ldap_auth_token: token
-    # ).then((data)->
-    #     workauths=( \
-    #       id:workauth.work_auth_id, \
-    #       name: ( \
-    #         if Em.isEmpty workauth.work_auth_name \
-    #         then workauth.project_name \
-    #         else workauth.work_auth_name), \
-    #       hours:workauth.work_auth_hours, \
-    #       due:workauth.work_auth_date_due \
-    #       for workauth in data).unique 'id'
-    #     workauths = 
-    #       workauths : workauths
-    #     adapter.didFindAll store, type, workauths
-    # ).()-> null, DS.rejectionHAndler
 
   findQuery: (store, type, query, recordArray) ->
     console.log('find query')

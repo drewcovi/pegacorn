@@ -1,1 +1,0 @@
-App.PostsIndexRoute = App.PostsRoute.extend()

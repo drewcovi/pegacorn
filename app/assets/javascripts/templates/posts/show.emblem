@@ -1,9 +1,0 @@
-h1
-  = title
-p
-  = body
-linkTo 'posts.index'
-  | Back to posts list
-'
-linkTo 'posts.edit' this class='btn btn-warning'
-  | Edit this post

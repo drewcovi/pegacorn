@@ -1,2 +1,2 @@
-App.WorkauthView = Em.View.extend
-  templateName: 'workauths'
+# App.WorkauthView = Em.View.extend
+#   templateName: 'workauths'

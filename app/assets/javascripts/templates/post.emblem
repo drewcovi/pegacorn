@@ -1,0 +1,11 @@
+h1
+  = title
+time Updated #{date updatedAt}
+p
+  == markdown body
+
+linkTo 'post.edit' this class='btn btn-warning'
+  i.icon-edit
+  |&nbsp;Edit this Post
+
+outlet

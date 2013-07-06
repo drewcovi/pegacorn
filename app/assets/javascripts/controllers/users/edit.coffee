@@ -1,7 +1,7 @@
 App.UsersEditController = App.UserController.extend
   save: ->
     @store.commit()
-    @transitionToRoute 'users.show', @content
+    @transitionToRoute 'user', @content
 
   cancel: ->
     @transaction = @store.transaction()
@@ -13,7 +13,7 @@ App.UsersEditController = App.UserController.extend
   destroy: ->
     @transaction = @store.transaction()
     @transaction.add @content
-    if window.confirm 'Are you sure you want to delete?'
+    if window.confirm "Are you sure you want to delete #{@content.get('fullName')}"
       @content.deleteRecord()
       @transaction.commit()
       @content.one 'didDelete', ()=>

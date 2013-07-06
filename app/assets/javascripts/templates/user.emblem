@@ -1,2 +1,24 @@
-h1 foo
-outlet
+if App.Auth.signedIn
+  h1
+    fullName
+  p #{email}
+
+  if isCurrent
+    label Guts Token
+    Ember.TextField disabled="disabled" valueBinding="gutsToken"
+    label Ldap Username
+    Ember.TextField disabled="disabled" valueBinding="ldap"
+
+  if isCurrent
+    hr
+    p Workauths loaded : #{workauths.length}
+    each workauths
+      li this
+  hr
+  linkTo 'users.edit' this class='btn btn-warning'
+    i.icon-edit
+    |&nbsp;Edit this User
+  '
+
+else
+  | You need to sign in first

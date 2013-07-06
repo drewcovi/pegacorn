@@ -1,0 +1,8 @@
+button.btn.btn-success click="save"
+  i.icon-save
+  |&nbsp;Create
+'
+.pull-right
+  a.btn-link click="cancel" target="controller"
+    i.icon-undo
+    |&nbsp;Cancel

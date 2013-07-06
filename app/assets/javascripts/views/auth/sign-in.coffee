@@ -3,7 +3,7 @@ App.AuthSignInView = Em.View.extend
 
   email:    null
   password: null
-  remember: false
+  remember: true
 
   submit: (event, view) ->
     event.preventDefault()

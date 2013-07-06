@@ -1,1 +1,0 @@
-App.UsersShowController = App.UserController.extend()

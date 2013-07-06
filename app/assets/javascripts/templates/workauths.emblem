@@ -1,8 +1,8 @@
 h1 Workauths for #{worker.firstName}
-worker
+worker.workauths.length
 table.table.table-striped
   tbody
-  each controller
+  each worker.workauths
     tr
       td
         linkTo workauths.show this

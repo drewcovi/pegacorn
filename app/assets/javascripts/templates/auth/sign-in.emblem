@@ -4,9 +4,10 @@ form
     Ember.TextField valueBinding=view.email
     label Password
     Ember.TextField type='password' valueBinding=view.password
-
     label.checkbox
       Ember.Checkbox class='checkbox' checkedBinding=view.remember
-      | Remember me
-
-    button.btn Sign In
+      |&nbsp;Remember me
+    '
+    button.btn
+      i.icon-signout
+      |&nbsp;Sign In

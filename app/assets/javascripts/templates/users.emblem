@@ -1,17 +1,21 @@
 if App.Auth.signedIn
   .span4
-    h1 Users
+    h1 Users 
     table.table.table-striped
       tbody
-      each content
+      each model
         tr
           td
-            linkTo 'user.show' this
-              email
+            linkTo 'user' this
+              = email
           td
-            / linkTo 'user.edit' this class='btn btn-warning' | edit
+            linkTo 'users.edit' this class='btn btn-warning'
+              i.icon-edit
+              |&nbsp;Edit
 
-    linkTo 'users.new' class='btn btn-primary' | Add New User
+    linkTo 'users.new' class='btn btn-primary'
+      i.icon-plus
+      |&nbsp;Add New User
   .span7
     outlet
 else

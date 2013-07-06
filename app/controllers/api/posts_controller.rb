@@ -1,6 +1,11 @@
 module Api
   class PostsController < BaseController
+    def find (params)
+      # post = Post.find(params[:id])
+      post = Post.find_by_permalink(params[:id])
+    end
     def index
+      post = find params
       posts = Post.all
       if posts
         render json: posts
@@ -10,8 +15,7 @@ module Api
     end
 
     def show
-      # render json: Post.find_by_permalink(params[:id])
-      post = Post.find_by_id(params[:id])
+      post = find params
       if post
         render json: post
       else
@@ -20,7 +24,7 @@ module Api
     end
 
     def destroy
-      post = Post.find(params[:id])
+      post = find params
       post.destroy
       if post.destroy
         render json: post, status: 204
@@ -30,7 +34,8 @@ module Api
     end
 
     def update
-      post = Post.find(params[:id])
+      # post = Post.find(params[:id])
+        post = Post.find_by_permalink(params[:id])
       # post.update_attributes(params[:post])
       updated = post.update_attributes(
         :title => params[:post][:title],

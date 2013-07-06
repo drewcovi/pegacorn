@@ -1,13 +1,13 @@
 form
   div
     label Email
-    Ember.TextField valueBinding="email"
+    Ember.TextField valueBinding='email'
     label Password
-    Ember.TextField valueBinding="password" type='password'
+    Ember.TextField valueBinding='password' type='password'
     label First Name
-    Ember.TextField valueBinding="firstName"
+    Ember.TextField valueBinding='firstName'
     label Last Name
-    Ember.TextField valueBinding="lastName"
+    Ember.TextField valueBinding='lastName'
   if isCurrent  
     label Guts Token
     Ember.TextField valueBinding="gutsToken"

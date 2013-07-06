@@ -10,11 +10,21 @@
 # User.create(:first_name => 'Abraham', :last_name => 'Lincoln', :age => 56, :quote => "I'd like to see a show tonight.")
 
 User.create([
-  { email: 'foo@example.com', password: 'foopassword' },
-  { email: 'bar@example.com', password: 'barpassword' }
+  { email: 'drew@clockwork.net',
+    first_name: 'Drew',
+    last_name: 'Covi',
+    ldap: 'drew',
+    password: 'testing123'
+  },
+  { email: 'devteam@clockwork.net',
+    password: 'testing123',
+    first_name: 'Clockwork',
+    last_name: 'Devteam'
+  }
 ])
 Post.create([
-  { title: 'post 1' },
-  { title: 'post 2' },
-  { title: 'post 3' }
+  { title: 'post 1',
+    body: 'post-body',
+    permalink: 'post-1'
+  }
 ])

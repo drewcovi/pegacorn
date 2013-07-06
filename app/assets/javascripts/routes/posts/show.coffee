@@ -1,1 +1,0 @@
-App.PostsShowRoute = App.PostRoute.extend()

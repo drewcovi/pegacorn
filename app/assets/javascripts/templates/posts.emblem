@@ -2,13 +2,18 @@
   h1 Posts
   table.table.table-striped
     tbody
-    each controller
+    each model
       tr
         td
-          linkTo 'posts.show' this
+          linkTo 'post' this
             = title
         td
-          linkTo 'posts.edit' this class='btn btn-warning' | edit
-  linkTo 'posts.new' class='btn btn-primary' | Add New Post
+          linkTo 'post.edit' this class='btn btn-warning'
+            i.icon-edit
+            |&nbsp;Edit
+          
+  linkTo 'posts.new' class='btn btn-primary'
+    i.icon-plus
+    |&nbsp;Add New Post
 .span7
   outlet

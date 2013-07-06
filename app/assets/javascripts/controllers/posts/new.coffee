@@ -9,7 +9,7 @@ App.PostsNewController = App.PostController.extend
 
   afterSave: ->
     @content.removeObserver 'id', @, 'afterSave'
-    @transitionToRoute('posts.show', @content)
+    @transitionToRoute('post', @content)
 
   headerTitle: 'Create'
   buttonTitle: 'Create'

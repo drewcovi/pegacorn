@@ -1,0 +1,12 @@
+button.btn click="save"
+  i.icon-save
+  |&nbsp;Update
+'
+.pull-right
+  button.btn-link click="cancel" target="controller"
+    i.icon-undo
+    |&nbsp;Cancel
+  '
+  button.btn.btn-danger click="destroy"
+    i.icon-trash
+    |&nbsp;Destroy

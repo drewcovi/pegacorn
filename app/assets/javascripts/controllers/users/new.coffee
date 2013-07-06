@@ -9,7 +9,7 @@ App.UsersNewController = App.UserController.extend
 
   afterSave: ->
     @content.removeObserver 'id', @, 'afterSave'
-    @transitionToRoute('users.show', @content)
+    @transitionToRoute('user', @content)
 
   headerTitle: 'Create'
   buttonTitle: 'Create'
