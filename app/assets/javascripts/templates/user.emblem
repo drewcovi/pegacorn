@@ -15,7 +15,7 @@ if App.Auth.signedIn
     each workauths
       li this
   hr
-  linkTo 'users.edit' this class='btn btn-warning'
+  linkTo 'users.edit' this class='btn'
     i.icon-edit
     |&nbsp;Edit this User
   '

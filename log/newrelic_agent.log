@@ -3261,3 +3261,20 @@ hr
 [07/06/13 15:56:29 -0500 localhost (4991)] INFO : Installing Rails 3.1/3.2 view instrumentation
 [07/06/13 15:56:29 -0500 localhost (4991)] INFO : Installing Rails3 Error instrumentation
 [07/06/13 15:56:29 -0500 localhost (4991)] INFO : Finished instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Starting the New Relic agent in "development" environment.
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Reading configuration from config/newrelic.yml
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Enabling the Request Sampler.
+[07/06/13 18:31:13 -0500 localhost (6011)] ERROR : No application name configured.
+[07/06/13 18:31:13 -0500 localhost (6011)] ERROR : The Agent cannot start without at least one. Please check your 
+[07/06/13 18:31:13 -0500 localhost (6011)] ERROR : newrelic.yml and ensure that it is valid and has at least one 
+[07/06/13 18:31:13 -0500 localhost (6011)] ERROR : value set for app_name in the development 
+[07/06/13 18:31:13 -0500 localhost (6011)] ERROR : environment.
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing ActiveRecord instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing Net instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing Unicorn instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Detected Unicorn, please see additional documentation: https://newrelic.com/docs/troubleshooting/im-using-unicorn-and-i-dont-see-any-data
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing Rails 3 Controller instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Installing Rails3 Error instrumentation
+[07/06/13 18:31:13 -0500 localhost (6011)] INFO : Finished instrumentation

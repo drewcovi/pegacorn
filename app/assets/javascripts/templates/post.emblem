@@ -3,9 +3,10 @@ h1
 time Updated #{date updatedAt}
 p
   == markdown body
-
-linkTo 'post.edit' this class='btn btn-warning'
-  i.icon-edit
-  |&nbsp;Edit this Post
+  
+if App.Auth.signedIn
+  linkTo 'post.edit' this class='btn'
+    i.icon-edit
+    |&nbsp;Edit this Post
 
 outlet

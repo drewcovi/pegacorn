@@ -1,8 +1,8 @@
 .navbar.navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
-      App.AuthView
       .nav-collapse.collapse
+        App.AuthView
         ul.nav
           li class={isHome:active}
               linkTo 'posts.index'

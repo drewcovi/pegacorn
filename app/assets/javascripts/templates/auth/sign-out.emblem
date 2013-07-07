@@ -1,5 +1,4 @@
-.row
-  form.pull-right
-    button.btn
-      i.icon-signout
-      |  Sign out
+form.pull-right
+  button.btn
+    i.icon-signout
+    |  Sign out

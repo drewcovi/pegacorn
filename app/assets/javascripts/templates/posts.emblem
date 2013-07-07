@@ -8,12 +8,13 @@
           linkTo 'post' this
             = title
         td
-          linkTo 'post.edit' this class='btn btn-warning'
-            i.icon-edit
-            |&nbsp;Edit
-          
-  linkTo 'posts.new' class='btn btn-primary'
-    i.icon-plus
-    |&nbsp;Add New Post
+          if App.Auth.signedIn
+            linkTo 'post.edit' this class='btn'
+              i.icon-edit
+              |&nbsp;Edit
+  if App.Auth.signedIn        
+    linkTo 'posts.new' class='btn btn-primary'
+      i.icon-plus
+      |&nbsp;Add New Post
 .span7
   outlet

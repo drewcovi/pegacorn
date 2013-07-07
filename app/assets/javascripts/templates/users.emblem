@@ -7,9 +7,9 @@ if App.Auth.signedIn
         tr
           td
             linkTo 'user' this
-              = email
+              = fullName
           td
-            linkTo 'users.edit' this class='btn btn-warning'
+            linkTo 'users.edit' this class='btn'
               i.icon-edit
               |&nbsp;Edit
 

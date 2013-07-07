@@ -1,12 +1,12 @@
-button.btn click="save"
+button.btn.btn-success click="save"
   i.icon-save
   |&nbsp;Update
 '
 .pull-right
+  button.btn.btn-danger.btn-mini click="destroy"
+    i.icon-trash
+    |&nbsp;Destroy
+  '
   button.btn-link click="cancel" target="controller"
     i.icon-undo
     |&nbsp;Cancel
-  '
-  button.btn.btn-danger click="destroy"
-    i.icon-trash
-    |&nbsp;Destroy
