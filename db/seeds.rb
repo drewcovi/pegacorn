@@ -24,7 +24,7 @@ User.create([
 ])
 Post.create([
   { title: 'post 1',
-    body: 'post-body',
+    body: 'This is a **markup** supported post body.  You can add [hyperlinks](http://clockwork.net)',
     permalink: 'post-1'
   }
 ])
