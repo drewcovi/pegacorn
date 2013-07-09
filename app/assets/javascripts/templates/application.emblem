@@ -11,6 +11,10 @@
             li    
               linkTo 'users.index'
                 | Users list
+            li    
+              linkTo 'workauths'
+                | Workauths
+
 
 .container-fluid#main
   .row-fluid

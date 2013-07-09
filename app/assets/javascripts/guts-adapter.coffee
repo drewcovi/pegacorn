@@ -16,7 +16,6 @@ DS.GUTSAdapter = DS.Adapter.extend Ember.Evented,
     console.log 'finding workauths by id', store, type, id
 
   findAll: (store, type) ->
-    return if !App.Auth.get('user').get('ldap')
     method = 'get_work_auths_json'
     adapter = @
     token = App.Auth.get('user').get('gutsToken')
