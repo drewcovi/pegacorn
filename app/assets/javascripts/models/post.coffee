@@ -3,6 +3,7 @@ App.Post = DS.Model.extend
   body: DS.attr 'string'
   param: DS.attr 'string'
   permalink: (->
-      return @get('title').dasherize()
+      if @get('title')
+        return @get('title').dasherize()
     ).property('title')
   updatedAt: DS.attr 'date'
