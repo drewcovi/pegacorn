@@ -3,7 +3,7 @@ App.UsersEditController = App.UserController.extend
     workauths = @content.get('workauths')
     #Check workauth records on client
     if workauths.get('length') <= 0
-      importWorkauths()
+      @importWorkauths()
     @store.commit()
     @transitionToRoute 'user', @content
 

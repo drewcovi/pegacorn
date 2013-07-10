@@ -10,12 +10,6 @@
 # User.create(:first_name => 'Abraham', :last_name => 'Lincoln', :age => 56, :quote => "I'd like to see a show tonight.")
 
 User.create([
-  { email: 'drew@clockwork.net',
-    first_name: 'Drew',
-    last_name: 'Covi',
-    ldap: 'drew',
-    password: 'testing123'
-  },
   { email: 'devteam@clockwork.net',
     password: 'testing123',
     first_name: 'Clockwork',
