@@ -8,6 +8,11 @@ App.PostEditController = App.PostController.extend
       @content.rollback()
     @transitionToRoute 'post'
 
+  # permalink: (->
+  #   console.log('changing')
+  #   return @content.get('permalink')
+  #   ).observes('permalink')
+  
   destroy: ->
     @transaction = @store.transaction()
     @transaction.add @content

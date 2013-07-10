@@ -3,6 +3,6 @@ App.PostController = Em.ObjectController.extend
   save: ->
     @set 'isEditing', false
     @store.commit()
-    
+
   edit: ->
     @set 'isEditing', true
