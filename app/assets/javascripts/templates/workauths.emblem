@@ -1,10 +1,17 @@
-h1 Workauths for #{worker.firstName}
-worker.workauths.length
-table.table.table-striped
-  tbody
-  each worker.workauths
-    tr
-      td
-        linkTo workauths.show this
-          name
+.span4
+  h1 Workauths for #{currentUser.fullName}
+  table.table.table-striped
+    tbody
+    each content
+      tr
+        td
+          linkTo 'workauth' this
+            name
+    else
+      tr
+        td
+          p Please make sure you've added your Guts Token and ldap username to your account
+.span7
+    outlet
+
 

@@ -21,7 +21,7 @@ App.Store.registerAdapter 'App.Post', App.Adapter.create
 App.Store.registerAdapter 'App.User', App.Adapter.create
   url: '/api'
 
-App.Store.registerAdapter App.Workauth, DS.GUTSAdapter.extend
+App.Store.registerAdapter 'App.Workauth', DS.GUTSAdapter.extend
   url: "https://mattgutsviz.dev.clockwork.net/tcs_connector/?action=",
   # primaryKey: (type) ->
   #   'gutsId' if type is 'App.Workauth'

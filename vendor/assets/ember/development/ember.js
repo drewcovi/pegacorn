@@ -1,5 +1,5 @@
-// Version: v1.0.0-rc.6-56-g19271bc
-// Last commit: 19271bc (2013-06-30 23:18:40 -0700)
+// Version: v1.0.0-rc.6-106-gaca4cef
+// Last commit: aca4cef (2013-07-09 08:30:16 -0700)
 
 
 (function() {
@@ -156,8 +156,8 @@ Ember.deprecateFunc = function(message, func) {
 
 })();
 
-// Version: v1.0.0-rc.6-56-g19271bc
-// Last commit: 19271bc (2013-06-30 23:18:40 -0700)
+// Version: v1.0.0-rc.6-106-gaca4cef
+// Last commit: aca4cef (2013-07-09 08:30:16 -0700)
 
 
 (function() {
@@ -354,16 +354,19 @@ Ember.uuid = 0;
 //
 
 function consoleMethod(name) {
-  if (imports.console && imports.console[name]) {
+  var console = imports.console,
+      method = typeof console === 'object' ? console[name] : null;
+
+  if (method) {
     // Older IE doesn't support apply, but Chrome needs it
-    if (imports.console[name].apply) {
+    if (method.apply) {
       return function() {
-        imports.console[name].apply(imports.console, arguments);
+        method.apply(console, arguments);
       };
     } else {
       return function() {
         var message = Array.prototype.join.call(arguments, ', ');
-        imports.console[name](message);
+        method(message);
       };
     }
   }
@@ -2607,8 +2610,7 @@ Ember.trySetPath = Ember.deprecateFunc('trySetPath has been renamed to trySet', 
   Map is mocked out to look like an Ember object, so you can do
   `Ember.Map.create()` for symmetry with other Ember classes.
 */
-var get = Ember.get,
-    set = Ember.set,
+var set = Ember.set,
     guidFor = Ember.guidFor,
     indexOf = Ember.ArrayPolyfills.indexOf;
 
@@ -4541,6 +4543,220 @@ Ember.removeBeforeObserver = function(obj, path, target, method) {
 
 
 (function() {
+define("backburner/queue",
+  ["exports"],
+  function(__exports__) {
+    "use strict";
+    function Queue(daq, name, options) {
+      this.daq = daq;
+      this.name = name;
+      this.options = options;
+      this._queue = [];
+    }
+
+    Queue.prototype = {
+      daq: null,
+      name: null,
+      options: null,
+      _queue: null,
+
+      push: function(target, method, args, stack) {
+        var queue = this._queue;
+        queue.push(target, method, args, stack);
+        return {queue: this, target: target, method: method};
+      },
+
+      pushUnique: function(target, method, args, stack) {
+        var queue = this._queue, currentTarget, currentMethod, i, l;
+
+        for (i = 0, l = queue.length; i < l; i += 4) {
+          currentTarget = queue[i];
+          currentMethod = queue[i+1];
+
+          if (currentTarget === target && currentMethod === method) {
+            queue[i+2] = args; // replace args
+            queue[i+3] = stack; // replace stack
+            return {queue: this, target: target, method: method}; // TODO: test this code path
+          }
+        }
+
+        this._queue.push(target, method, args, stack);
+        return {queue: this, target: target, method: method};
+      },
+
+      // TODO: remove me, only being used for Ember.run.sync
+      flush: function() {
+        var queue = this._queue,
+            options = this.options,
+            before = options && options.before,
+            after = options && options.after,
+            target, method, args, stack, i, l = queue.length;
+
+        if (l && before) { before(); }
+        for (i = 0; i < l; i += 4) {
+          target = queue[i];
+          method = queue[i+1];
+          args   = queue[i+2];
+          stack  = queue[i+3]; // Debugging assistance
+
+          // TODO: error handling
+          if (args && args.length > 0) {
+            method.apply(target, args);
+          } else {
+            method.call(target);
+          }
+        }
+        if (l && after) { after(); }
+
+        // check if new items have been added
+        if (queue.length > l) {
+          this._queue = queue.slice(l);
+          this.flush();
+        } else {
+          this._queue.length = 0;
+        }
+      },
+
+      cancel: function(actionToCancel) {
+        var queue = this._queue, currentTarget, currentMethod, i, l;
+
+        for (i = 0, l = queue.length; i < l; i += 4) {
+          currentTarget = queue[i];
+          currentMethod = queue[i+1];
+
+          if (currentTarget === actionToCancel.target && currentMethod === actionToCancel.method) {
+            queue.splice(i, 4);
+            return true;
+          }
+        }
+
+        // if not found in current queue
+        // could be in the queue that is being flushed
+        queue = this._queueBeingFlushed;
+        if (!queue) {
+          return;
+        }
+        for (i = 0, l = queue.length; i < l; i += 4) {
+          currentTarget = queue[i];
+          currentMethod = queue[i+1];
+
+          if (currentTarget === actionToCancel.target && currentMethod === actionToCancel.method) {
+            // don't mess with array during flush
+            // just nullify the method
+            queue[i+1] = null;
+            return true;
+          }
+        }
+      }
+    };
+
+
+    __exports__.Queue = Queue;
+  });
+
+define("backburner/deferred_action_queues",
+  ["backburner/queue","exports"],
+  function(__dependency1__, __exports__) {
+    "use strict";
+    var Queue = __dependency1__.Queue;
+
+    function DeferredActionQueues(queueNames, options) {
+      var queues = this.queues = {};
+      this.queueNames = queueNames = queueNames || [];
+
+      var queueName;
+      for (var i = 0, l = queueNames.length; i < l; i++) {
+        queueName = queueNames[i];
+        queues[queueName] = new Queue(this, queueName, options[queueName]);
+      }
+    }
+
+    DeferredActionQueues.prototype = {
+      queueNames: null,
+      queues: null,
+
+      schedule: function(queueName, target, method, args, onceFlag, stack) {
+        var queues = this.queues,
+            queue = queues[queueName];
+
+        if (!queue) { throw new Error("You attempted to schedule an action in a queue (" + queueName + ") that doesn't exist"); }
+
+        if (onceFlag) {
+          return queue.pushUnique(target, method, args, stack);
+        } else {
+          return queue.push(target, method, args, stack);
+        }
+      },
+
+      flush: function() {
+        var queues = this.queues,
+            queueNames = this.queueNames,
+            queueName, queue, queueItems, priorQueueNameIndex,
+            queueNameIndex = 0, numberOfQueues = queueNames.length;
+
+        outerloop:
+        while (queueNameIndex < numberOfQueues) {
+          queueName = queueNames[queueNameIndex];
+          queue = queues[queueName];
+          queueItems = queue._queueBeingFlushed = queue._queue.slice();
+          queue._queue = [];
+
+          var options = queue.options,
+              before = options && options.before,
+              after = options && options.after,
+              target, method, args, stack,
+              queueIndex = 0, numberOfQueueItems = queueItems.length;
+
+          if (numberOfQueueItems && before) { before(); }
+          while (queueIndex < numberOfQueueItems) {
+            target = queueItems[queueIndex];
+            method = queueItems[queueIndex+1];
+            args   = queueItems[queueIndex+2];
+            stack  = queueItems[queueIndex+3]; // Debugging assistance
+
+            if (typeof method === 'string') { method = target[method]; }
+
+            // method could have been nullified / canceled during flush
+            if (method) {
+              // TODO: error handling
+              if (args && args.length > 0) {
+                method.apply(target, args);
+              } else {
+                method.call(target);
+              }
+            }
+
+            queueIndex += 4;
+          }
+          queue._queueBeingFlushed = null;
+          if (numberOfQueueItems && after) { after(); }
+
+          if ((priorQueueNameIndex = indexOfPriorQueueWithActions(this, queueNameIndex)) !== -1) {
+            queueNameIndex = priorQueueNameIndex;
+            continue outerloop;
+          }
+
+          queueNameIndex++;
+        }
+      }
+    };
+
+    function indexOfPriorQueueWithActions(daq, currentQueueIndex) {
+      var queueName, queue;
+
+      for (var i = 0, l = currentQueueIndex; i <= l; i++) {
+        queueName = daq.queueNames[i];
+        queue = daq.queues[queueName];
+        if (queue._queue.length) { return i; }
+      }
+
+      return -1;
+    }
+
+
+    __exports__.DeferredActionQueues = DeferredActionQueues;
+  });
+
 define("backburner",
   ["backburner/deferred_action_queues","exports"],
   function(__dependency1__, __exports__) {
@@ -4549,9 +4765,11 @@ define("backburner",
 
     var slice = [].slice,
         pop = [].pop,
+        throttlers = [],
         debouncees = [],
         timers = [],
-        autorun, laterTimer, laterTimerExpiresAt;
+        autorun, laterTimer, laterTimerExpiresAt,
+        global = this;
 
     function Backburner(queueNames, options) {
       this.queueNames = queueNames;
@@ -4708,7 +4926,7 @@ define("backburner",
           clearTimeout(laterTimer);
           laterTimer = null;
         }
-        laterTimer = window.setTimeout(function() {
+        laterTimer = global.setTimeout(function() {
           executeTimers(self);
           laterTimer = null;
           laterTimerExpiresAt = null;
@@ -4718,38 +4936,86 @@ define("backburner",
         return fn;
       },
 
-      debounce: function(target, method /* , args, wait */) {
+      throttle: function(target, method /* , args, wait */) {
         var self = this,
             args = arguments,
             wait = pop.call(args),
-            debouncee;
+            throttler;
 
-        for (var i = 0, l = debouncees.length; i < l; i++) {
-          debouncee = debouncees[i];
-          if (debouncee[0] === target && debouncee[1] === method) { return; } // do nothing
+        for (var i = 0, l = throttlers.length; i < l; i++) {
+          throttler = throttlers[i];
+          if (throttler[0] === target && throttler[1] === method) { return; } // do nothing
         }
 
-        var timer = window.setTimeout(function() {
+        var timer = global.setTimeout(function() {
           self.run.apply(self, args);
 
-          // remove debouncee
+          // remove throttler
           var index = -1;
-          for (var i = 0, l = debouncees.length; i < l; i++) {
-            debouncee = debouncees[i];
-            if (debouncee[0] === target && debouncee[1] === method) {
+          for (var i = 0, l = throttlers.length; i < l; i++) {
+            throttler = throttlers[i];
+            if (throttler[0] === target && throttler[1] === method) {
               index = i;
               break;
             }
           }
 
-          if (index > -1) { debouncees.splice(index, 1); }
+          if (index > -1) { throttlers.splice(index, 1); }
         }, wait);
+
+        throttlers.push([target, method, timer]);
+      },
+
+      debounce: function(target, method /* , args, wait, [immediate] */) {
+        var self = this,
+            args = arguments,
+            immediate = pop.call(args),
+            wait,
+            index,
+            debouncee;
+
+        if (typeof immediate === "number") {
+          wait = immediate;
+          immediate = false;
+        } else {
+          wait = pop.call(args);
+        }
+
+        // Remove debouncee
+        index = findDebouncee(target, method);
+
+        if (index !== -1) {
+          debouncee = debouncees[index];
+          debouncees.splice(index, 1);
+          clearTimeout(debouncee[2]);
+        }
+
+        var timer = window.setTimeout(function() {
+          if (!immediate) {
+            self.run.apply(self, args);
+          }
+          index = findDebouncee(target, method);
+          if (index) {
+            debouncees.splice(index, 1);
+          }
+        }, wait);
+
+        if (immediate && index === -1) {
+          self.run.apply(self, args);
+        }
 
         debouncees.push([target, method, timer]);
       },
 
       cancelTimers: function() {
-        for (var i = 0, l = debouncees.length; i < l; i++) {
+        var i, len;
+
+        for (i = 0, len = throttlers.length; i < len; i++) {
+          clearTimeout(throttlers[i][2]);
+        }
+        throttlers = [];
+
+        for (i = 0, len = debouncees.length; i < len; i++) {
           clearTimeout(debouncees[i][2]);
         }
         debouncees = [];
@@ -4792,7 +5058,7 @@ define("backburner",
 
     function createAutorun(backburner) {
       backburner.begin();
-      autorun = window.setTimeout(function() {
+      autorun = global.setTimeout(function() {
         backburner.end();
         autorun = null;
       });
@@ -4817,7 +5083,7 @@ define("backburner",
       });
 
       if (timers.length) {
-        laterTimer = window.setTimeout(function() {
+        laterTimer = global.setTimeout(function() {
           executeTimers(self);
           laterTimer = null;
           laterTimerExpiresAt = null;
@@ -4826,222 +5092,23 @@ define("backburner",
       }
     }
 
+    function findDebouncee(target, method) {
+      var debouncee,
+          index = -1;
+
+      for (var i = 0, l = debouncees.length; i < l; i++) {
+        debouncee = debouncees[i];
+        if (debouncee[0] === target && debouncee[1] === method) {
+          index = i;
+          break;
+        }
+      }
+
+      return index;
+    }
+
 
     __exports__.Backburner = Backburner;
-  });
-
-define("backburner/deferred_action_queues",
-  ["backburner/queue","exports"],
-  function(__dependency1__, __exports__) {
-    "use strict";
-    var Queue = __dependency1__.Queue;
-
-    function DeferredActionQueues(queueNames, options) {
-      var queues = this.queues = {};
-      this.queueNames = queueNames = queueNames || [];
-
-      var queueName;
-      for (var i = 0, l = queueNames.length; i < l; i++) {
-        queueName = queueNames[i];
-        queues[queueName] = new Queue(this, queueName, options[queueName]);
-      }
-    }
-
-    DeferredActionQueues.prototype = {
-      queueNames: null,
-      queues: null,
-
-      schedule: function(queueName, target, method, args, onceFlag, stack) {
-        var queues = this.queues,
-            queue = queues[queueName];
-
-        if (!queue) { throw new Error("You attempted to schedule an action in a queue (" + queueName + ") that doesn't exist"); }
-
-        if (onceFlag) {
-          return queue.pushUnique(target, method, args, stack);
-        } else {
-          return queue.push(target, method, args, stack);
-        }
-      },
-
-      flush: function() {
-        var queues = this.queues,
-            queueNames = this.queueNames,
-            queueName, queue, queueItems, priorQueueNameIndex,
-            queueNameIndex = 0, numberOfQueues = queueNames.length;
-
-        outerloop:
-        while (queueNameIndex < numberOfQueues) {
-          queueName = queueNames[queueNameIndex];
-          queue = queues[queueName];
-          queueItems = queue._queueBeingFlushed = queue._queue.slice();
-          queue._queue = [];
-
-          var options = queue.options,
-              before = options && options.before,
-              after = options && options.after,
-              target, method, args, stack,
-              queueIndex = 0, numberOfQueueItems = queueItems.length;
-
-          if (numberOfQueueItems && before) { before(); }
-          while (queueIndex < numberOfQueueItems) {
-            target = queueItems[queueIndex];
-            method = queueItems[queueIndex+1];
-            args   = queueItems[queueIndex+2];
-            stack  = queueItems[queueIndex+3]; // Debugging assistance
-
-            if (typeof method === 'string') { method = target[method]; }
-
-            // method could have been nullified / canceled during flush
-            if (method) {
-              // TODO: error handling
-              if (args && args.length > 0) {
-                method.apply(target, args);
-              } else {
-                method.call(target);
-              }
-            }
-
-            queueIndex += 4;
-          }
-          queue._queueBeingFlushed = null;
-          if (numberOfQueueItems && after) { after(); }
-
-          if ((priorQueueNameIndex = indexOfPriorQueueWithActions(this, queueNameIndex)) !== -1) {
-            queueNameIndex = priorQueueNameIndex;
-            continue outerloop;
-          }
-
-          queueNameIndex++;
-        }
-      }
-    };
-
-    function indexOfPriorQueueWithActions(daq, currentQueueIndex) {
-      var queueName, queue;
-
-      for (var i = 0, l = currentQueueIndex; i <= l; i++) {
-        queueName = daq.queueNames[i];
-        queue = daq.queues[queueName];
-        if (queue._queue.length) { return i; }
-      }
-
-      return -1;
-    }
-
-
-    __exports__.DeferredActionQueues = DeferredActionQueues;
-  });
-
-define("backburner/queue",
-  ["exports"],
-  function(__exports__) {
-    "use strict";
-    function Queue(daq, name, options) {
-      this.daq = daq;
-      this.name = name;
-      this.options = options;
-      this._queue = [];
-    }
-
-    Queue.prototype = {
-      daq: null,
-      name: null,
-      options: null,
-      _queue: null,
-
-      push: function(target, method, args, stack) {
-        var queue = this._queue;
-        queue.push(target, method, args, stack);
-        return {queue: this, target: target, method: method};
-      },
-
-      pushUnique: function(target, method, args, stack) {
-        var queue = this._queue, currentTarget, currentMethod, i, l;
-
-        for (i = 0, l = queue.length; i < l; i += 4) {
-          currentTarget = queue[i];
-          currentMethod = queue[i+1];
-
-          if (currentTarget === target && currentMethod === method) {
-            queue[i+2] = args; // replace args
-            queue[i+3] = stack; // replace stack
-            return {queue: this, target: target, method: method}; // TODO: test this code path
-          }
-        }
-
-        this._queue.push(target, method, args, stack);
-        return {queue: this, target: target, method: method};
-      },
-
-      // TODO: remove me, only being used for Ember.run.sync
-      flush: function() {
-        var queue = this._queue,
-            options = this.options,
-            before = options && options.before,
-            after = options && options.after,
-            target, method, args, stack, i, l = queue.length;
-
-        if (l && before) { before(); }
-        for (i = 0; i < l; i += 4) {
-          target = queue[i];
-          method = queue[i+1];
-          args   = queue[i+2];
-          stack  = queue[i+3]; // Debugging assistance
-
-          // TODO: error handling
-          if (args && args.length > 0) {
-            method.apply(target, args);
-          } else {
-            method.call(target);
-          }
-        }
-        if (l && after) { after(); }
-
-        // check if new items have been added
-        if (queue.length > l) {
-          this._queue = queue.slice(l);
-          this.flush();
-        } else {
-          this._queue.length = 0;
-        }
-      },
-
-      cancel: function(actionToCancel) {
-        var queue = this._queue, currentTarget, currentMethod, i, l;
-
-        for (i = 0, l = queue.length; i < l; i += 4) {
-          currentTarget = queue[i];
-          currentMethod = queue[i+1];
-
-          if (currentTarget === actionToCancel.target && currentMethod === actionToCancel.method) {
-            queue.splice(i, 4);
-            return true;
-          }
-        }
-
-        // if not found in current queue
-        // could be in the queue that is being flushed
-        queue = this._queueBeingFlushed;
-        if (!queue) {
-          return;
-        }
-        for (i = 0, l = queue.length; i < l; i += 4) {
-          currentTarget = queue[i];
-          currentMethod = queue[i+1];
-
-          if (currentTarget === actionToCancel.target && currentMethod === actionToCancel.method) {
-            // don't mess with array during flush
-            // just nullify the method
-            queue[i+1] = null;
-            return true;
-          }
-        }
-      }
-    };
-
-
-    __exports__.Queue = Queue;
   });
 })();
 
@@ -5354,7 +5421,7 @@ Ember.run.once = function(target, method) {
     var sayHi = function() { console.log('hi'); }
     Ember.run.scheduleOnce('afterRender', myContext, sayHi);
     Ember.run.scheduleOnce('afterRender', myContext, sayHi);
-    // doFoo will only be executed once, in the afterRender queue of the RunLoop
+    // sayHi will only be executed once, in the afterRender queue of the RunLoop
   });
   ```
 
@@ -5482,8 +5549,15 @@ Ember.run.cancel = function(timer) {
 };
 
 /**
-  Execute the passed method in a specified amount of time, reset timer
-  upon additional calls.
+  Delay calling the target method until the debounce period has elapsed
+  with no additional debounce calls. If `debounce` is called again before
+  the specified time has elapsed, the timer is reset and the entire period
+  must pass again before the target method is called.
+
+  This method should be used when an event may be called multiple times
+  but the action should only be called once when the event is done firing.
+  A common example is for scroll events where you only want updates to
+  happen once scrolling has ceased.
 
   ```javascript
     var myFunc = function() { console.log(this.name + ' ran.'); };
@@ -5507,10 +5581,48 @@ Ember.run.cancel = function(timer) {
     then it will be looked up on the passed target.
   @param {Object} [args*] Optional arguments to pass to the timeout.
   @param {Number} wait Number of milliseconds to wait.
+  @param {Boolean} immediate Trigger the function on the leading instead of the trailing edge of the wait interval.
   @return {void}
 */
 Ember.run.debounce = function() {
   return backburner.debounce.apply(backburner, arguments);
+};
+
+/**
+  Ensure that the target method is never called more frequently than
+  the specified spacing period.
+
+  ```javascript
+    var myFunc = function() { console.log(this.name + ' ran.'); };
+    var myContext = {name: 'throttle'};
+
+    Ember.run.throttle(myContext, myFunc, 150);
+
+    // 50ms passes
+    Ember.run.throttle(myContext, myFunc, 150);
+
+    // 50ms passes
+    Ember.run.throttle(myContext, myFunc, 150);
+
+    // 50ms passes
+    Ember.run.throttle(myContext, myFunc, 150);
+
+    // 150ms passes
+    // myFunc is invoked with context myContext
+    // console logs 'throttle ran.' twice, 150ms apart.
+  ```
+
+  @method throttle
+  @param {Object} [target] target of method to invoke
+  @param {Function|String} method The method to invoke.
+    May be a function or a string. If you pass a string
+    then it will be looked up on the passed target.
+  @param {Object} [args*] Optional arguments to pass to the timeout.
+  @param {Number} spacing Number of milliseconds to space out requests.
+  @return {void}
+*/
+Ember.run.throttle = function() {
+  return backburner.throttle.apply(backburner, arguments);
 };
 
 // Make sure it's not an autorun during testing
@@ -7372,6 +7484,16 @@ define("container",
       },
 
       /**
+        Delete the given key
+
+        @method remove
+        @param {String} key
+      */
+      remove: function(key) {
+        delete this.dict[key];
+      },
+
+      /**
         Check for the existence of given a key, if the key is present at the current
         level return true, otherwise walk up the parent hierarchy and try again. If
         no matching key is found, return false.
@@ -7559,10 +7681,33 @@ define("container",
       },
 
       /**
+        Unregister a fullName
+
+        ```javascript
+        var container = new Container();
+        container.register('model:user', User);
+
+        container.lookup('model:user') instanceof User //=> true
+
+        container.unregister('model:user')
+        container.lookup('model:user') === undefined //=> true
+
+        @method unregister
+        @param {String} fullName
+       */
+      unregister: function(fullName) {
+        var normalizedName = this.normalize(fullName);
+
+        this.registry.remove(normalizedName);
+        this.cache.remove(normalizedName);
+        this._options.remove(normalizedName);
+      },
+
+      /**
         Given a fullName return the corresponding factory.
 
-        By default `resolve` will retreive the factory from
-        it's containers registry.
+        By default `resolve` will retrieve the factory from
+        its container's registry.
 
         ```javascript
         var container = new Container();
@@ -8875,9 +9020,6 @@ function iter(key, value) {
   @since Ember 0.9
 */
 Ember.Enumerable = Ember.Mixin.create({
-
-  // compatibility
-  isEnumerable: true,
 
   /**
     Implement this method to make your class enumerable.
@@ -10577,7 +10719,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable,/**
 
     ```javascript
     var colors = ["red", "green", "blue"];
-    colors.pushObjects("black");               // ["red", "green", "blue", "black"]
+    colors.pushObjects(["black"]);               // ["red", "green", "blue", "black"]
     colors.pushObjects(["yellow", "orange"]);  // ["red", "green", "blue", "black", "yellow", "orange"]
     ```
 
@@ -10586,6 +10728,9 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable,/**
     @return {Ember.Array} receiver
   */
   pushObjects: function(objects) {
+    if(!(Ember.Enumerable.detect(objects) || Ember.isArray(objects))) {
+      throw new TypeError("Must pass Ember.Enumerable to Ember.MutableArray#pushObjects");
+    }
     this.replace(get(this, 'length'), 0, objects);
     return this;
   },
@@ -12673,6 +12818,9 @@ Ember.ArrayProxy = Ember.Object.extend(Ember.MutableArray,/** @scope Ember.Array
   },
 
   pushObjects: function(objects) {
+    if(!(Ember.Enumerable.detect(objects) || Ember.isArray(objects))) {
+      throw new TypeError("Must pass Ember.Enumerable to Ember.MutableArray#pushObjects");
+    }
     this._replace(get(this, 'length'), 0, objects);
     return this;
   },
@@ -19643,8 +19791,8 @@ if(!Handlebars && typeof require === 'function') {
   Handlebars = require('handlebars');
 }
 
-Ember.assert("Ember Handlebars requires Handlebars version 1.0.0. Include a SCRIPT tag in the HTML HEAD linking to the Handlebars file before you link to Ember.", Handlebars)
-Ember.assert("Ember Handlebars requires Handlebars version 1.0.0, COMPILER_REVISION expected: 4, got: " +  Handlebars.COMPILER_REVISION + " – Please note: Builds of master may have other COMPILER_REVISION values.", Handlebars.COMPILER_REVISION === 4);
+Ember.assert("Ember Handlebars requires Handlebars version 1.0.0. Include a SCRIPT tag in the HTML HEAD linking to the Handlebars file before you link to Ember.", Handlebars);
+Ember.assert("Ember Handlebars requires Handlebars version 1.0.0, COMPILER_REVISION expected: 4, got: " +  Handlebars.COMPILER_REVISION + " - Please note: Builds of master may have other COMPILER_REVISION values.", Handlebars.COMPILER_REVISION === 4);
 
 /**
   Prepares the Handlebars templating library for use inside Ember's view
@@ -19750,7 +19898,7 @@ Ember.Handlebars.helper = function(name, value) {
   } else {
     Ember.Handlebars.registerBoundHelper.apply(null, arguments);
   }
-}
+};
 
 /**
 @class helpers
@@ -21489,6 +21637,8 @@ EmberHandlebars.bindClasses = function(context, classBindings, view, bindAttrId,
 
 var get = Ember.get, set = Ember.set;
 var EmberHandlebars = Ember.Handlebars;
+var LOWERCASE_A_Z = /^[a-z]/;
+var VIEW_PREFIX = /^view\./;
 
 EmberHandlebars.ViewHelper = Ember.Object.create({
 
@@ -21600,7 +21750,18 @@ EmberHandlebars.ViewHelper = Ember.Object.create({
         newView;
 
     if ('string' === typeof path) {
-      newView = EmberHandlebars.get(thisContext, path, options);
+
+      // TODO: this is a lame conditional, this should likely change
+      // but something along these lines will likely need to be added
+      // as deprecation warnings
+      //
+      if (options.types[0] === 'STRING' && LOWERCASE_A_Z.test(path) && !VIEW_PREFIX.test(path)) {
+        Ember.assert("View requires a container", !!data.view.container);
+        newView = data.view.container.lookupFactory('view:' + path);
+      } else {
+        newView = EmberHandlebars.get(thisContext, path, options);
+      }
+
       Ember.assert("Unable to find view at path '" + path + "'", !!newView);
     } else {
       newView = path;
@@ -21969,11 +22130,25 @@ Ember.Handlebars.registerHelper('collection', function(path, options) {
   var hash = options.hash, itemHash = {}, match;
 
   // Extract item view class if provided else default to the standard class
-  var itemViewClass, itemViewPath = hash.itemViewClass;
-  var collectionPrototype = collectionClass.proto();
+  var collectionPrototype = collectionClass.proto(),
+      itemViewClass;
+
+  if (hash.itemView) {
+    var controller = data.keywords.controller;
+    Ember.assert('itemView given, but no container is available', controller && controller.container);
+    var container = controller.container;
+    itemViewClass = container.resolve('view:' + Ember.String.camelize(hash.itemView));
+    Ember.assert('itemView not found in container', !!itemViewClass);
+  } else if (hash.itemViewClass) {
+    itemViewClass = handlebarsGet(collectionPrototype, hash.itemViewClass, options);
+  } else {
+    itemViewClass = collectionPrototype.itemViewClass;
+  }
+
+  Ember.assert(fmt("%@ #collection: Could not find itemViewClass %@", [data.view, itemViewClass]), !!itemViewClass);
+
   delete hash.itemViewClass;
-  itemViewClass = itemViewPath ? handlebarsGet(collectionPrototype, itemViewPath, options) : collectionPrototype.itemViewClass;
-  Ember.assert(fmt("%@ #collection: Could not find itemViewClass %@", [data.view, itemViewPath]), !!itemViewClass);
+  delete hash.itemView;
 
   // Go through options passed to the {{collection}} helper and extract options
   // that configure item views instead of the collection itself.
@@ -26317,7 +26492,7 @@ Ember.Route = Ember.Object.extend({
     @method setup
   */
   setup: function(context) {
-    var controller = this.controllerFor(this.routeName, context);
+    var controller = this.controllerFor(this.controllerName || this.routeName, context);
 
     // Assign the route's controller so that it can more easily be
     // referenced in event handlers
@@ -26525,11 +26700,10 @@ Ember.Route = Ember.Object.extend({
     if (!name && sawParams) { return params; }
     else if (!name) { return; }
 
-    var className = classify(name),
-        namespace = this.router.namespace,
-        modelClass = namespace[className];
+    var modelClass = this.container.lookupFactory('model:' + name);
+    var namespace = get(this, 'router.namespace');
 
-    Ember.assert("You used the dynamic segment " + name + "_id in your router, but " + namespace + "." + className + " did not exist and you did not override your route's `model` hook.", modelClass);
+    Ember.assert("You used the dynamic segment " + name + "_id in your router, but " + namespace + "." + classify(name) + " did not exist and you did not override your route's `model` hook.", modelClass);
     return modelClass.find(value);
   },
 
@@ -26783,6 +26957,48 @@ Ember.Route = Ember.Object.extend({
     appendView(this, view, options);
   },
 
+  /**
+    Disconnects a view that has been rendered into an outlet.
+
+    You may pass any or all of the following options to `disconnectOutlet`:
+
+    * `outlet`: the name of the outlet to clear (default: 'main')
+    * `parentView`: the name of the view containing the outlet to clear
+       (default: the view rendered by the parent route)
+
+    Example:
+
+    ```js
+    App.ApplicationRoute = App.Route.extend({
+      events: {
+        showModal: function(evt) {
+          this.render(evt.modalName, {
+            outlet: 'modal',
+            into: 'application'
+          });
+        },
+        hideModal: function(evt) {
+          this.disconnectOutlet({
+            outlet: 'modal',
+            parentView: 'application'
+          });
+        }
+      }
+    });
+    ```
+
+    @method disconnectOutlet
+    @param {Object} options the options
+  */
+  disconnectOutlet: function(options) {
+    options = options || {};
+    options.parentView = options.parentView ? options.parentView.replace(/\//g, '.') : parentTemplate(this);
+    options.outlet = options.outlet || 'main';
+
+    var parentView = this.router._lookupActiveView(options.parentView);
+    parentView.disconnectOutlet(options.outlet);
+  },
+
   willDestroy: function() {
     this.teardownViews();
   },
@@ -26977,15 +27193,12 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     return resolveParams(options.context, options.params, { types: types, data: data });
   }
 
-  function args(linkView, router, route) {
-    var passedRouteName = route || get(linkView, 'namedRoute'), routeName;
-
-    routeName = fullRouteName(router, passedRouteName);
-
-    Ember.assert(fmt("The attempt to linkTo route '%@' failed. The router did not find '%@' in its possible routes: '%@'", [passedRouteName, passedRouteName, Ember.keys(router.router.recognizer.names).join("', '")]), router.hasRoute(routeName));
-
-    var ret = [ routeName ];
-    return ret.concat(resolvedPaths(linkView.parameters));
+  function createPath(path) {
+    var fullPath = 'paramsContext';
+    if(path !== '') {
+      fullPath += '.' + path;
+    }
+    return fullPath;
   }
 
   /**
@@ -27026,6 +27239,16 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     activeClass: 'active',
 
     /**
+      The CSS class to apply to `LinkView`'s element when its `loading`
+      property is `true`.
+
+      @property loadingClass
+      @type String
+      @default loading
+    **/
+    loadingClass: 'loading',
+
+    /**
       The CSS class to apply to a `LinkView`'s element when its `disabled`
       property is `true`.
       
@@ -27045,7 +27268,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     **/
     replace: false,
     attributeBindings: ['href', 'title'],
-    classNameBindings: ['active', 'disabled'],
+    classNameBindings: ['active', 'loading', 'disabled'],
 
     /**
       By default the `{{linkTo}}` helper responds to the `click` event. You
@@ -27074,10 +27297,39 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     **/
 
     init: function() {
-      this._super();
+      this._super.apply(this, arguments);
+
       // Map desired event name to invoke function
       var eventName = get(this, 'eventName');
       this.on(eventName, this, this._invoke);
+
+      var params = this.parameters.params,
+          length = params.length,
+          context = this.parameters.context,
+          self = this,
+          path, paths = Ember.A([]), i;
+
+      set(this, 'paramsContext', context);
+
+      for(i=0; i < length; i++) {
+        paths.pushObject(createPath(params[i]));
+      }
+
+      var observer = function(object, path) {
+        var notify = true, i;
+        for(i=0; i < paths.length; i++) {
+          if(!get(this, paths[i])) {
+            notify = false;
+          }
+        }
+        if(notify) {
+          this.notifyPropertyChange('routeArgs');
+        }
+      };
+
+      for(i=0; i < length; i++) {
+        this.registerObserver(this, paths[i], this, observer);
+      }
     },
 
     /**
@@ -27117,7 +27369,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
       @property active
     **/
     active: Ember.computed(function() {
-      var router = this.get('router'),
+      var router = get(this, 'router'),
           params = resolvedPaths(this.parameters),
           currentWhen = this.currentWhen || get(this, 'namedRoute'),
           currentWithIndex = currentWhen + '.index',
@@ -27126,6 +27378,21 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
 
       if (isActive) { return get(this, 'activeClass'); }
     }).property('namedRoute', 'router.url'),
+
+    loading: Ember.computed(function() {
+      if (!get(this, 'routeArgs')) { return get(this, 'loadingClass'); }
+    }).property('routeArgs'),
+
+    /**
+      Accessed as a classname binding to apply the `LinkView`'s `activeClass`
+      CSS `class` to the element when the link is active.
+
+      A `LinkView` is considered active when its `currentWhen` property is `true`
+      or the application's current route is the route the `LinkView` would trigger
+      transitions into.
+
+      @property active
+    **/
 
     router: Ember.computed(function() {
       return this.get('controller').container.lookup('router:main');
@@ -27147,8 +27414,13 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
       
       if (get(this, '_isDisabled')) { return false; }
 
-      var router = this.get('router'),
-          routeArgs = args(this, router);
+      if (get(this, 'loading')) { 
+        Ember.Logger.warn("This linkTo's parameters are either not yet loaded or point to an invalid route.");
+        return false; 
+      }
+
+      var router = get(this, 'router'),
+          routeArgs = get(this, 'routeArgs');
 
       if (this.get('replace')) {
         router.replaceWith.apply(router, routeArgs);
@@ -27156,6 +27428,31 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
         router.transitionTo.apply(router, routeArgs);
       }
     },
+
+    routeArgs: Ember.computed(function() {
+
+      var router = get(this, 'router'), 
+          namedRoute = get(this, 'namedRoute'), routeName;
+
+      if (!namedRoute && this.namedRouteBinding) {
+        // The present value of namedRoute is falsy, but since it's a binding
+        // and could be valid later, don't treat as error.
+        return;
+      }
+      namedRoute = fullRouteName(router, namedRoute);
+
+      Ember.assert(fmt("The attempt to linkTo route '%@' failed. The router did not find '%@' in its possible routes: '%@'", [namedRoute, namedRoute, Ember.keys(router.router.recognizer.names).join("', '")]), router.hasRoute(namedRoute));
+
+      var resolvedContexts = resolvedPaths(this.parameters), paramsPresent = true;
+      for (var i = 0, l = resolvedContexts.length; i < l; ++i) {
+        var context = resolvedContexts[i];
+
+        // If contexts aren't present, consider the linkView unloaded.
+        if (context === null || typeof context === 'undefined') { return; }
+      }
+
+      return [ namedRoute ].concat(resolvedContexts);
+    }).property('namedRoute'),
 
     /**
       Sets the element's `href` attribute to the url for
@@ -27169,9 +27466,21 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     href: Ember.computed(function() {
       if (this.get('tagName') !== 'a') { return false; }
 
-      var router = this.get('router');
-      return router.generate.apply(router, args(this, router));
-    }).property('namedRoute')
+      var router = get(this, 'router'),
+          routeArgs = get(this, 'routeArgs');
+
+      return routeArgs ? router.generate.apply(router, routeArgs) : get(this, 'loadingHref');
+    }).property('routeArgs'),
+
+    /**
+      The default href value to use while a linkTo is loading.
+      Only applies when tagName is 'a'
+
+      @property loadingHref
+      @type String
+      @default #
+    */
+    loadingHref: '#'
   });
 
   LinkView.toString = function() { return "LinkView"; };
@@ -27369,6 +27678,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     return Ember.Handlebars.helpers.view.call(this, LinkView, options);
   });
 });
+
 
 
 })();
@@ -28358,6 +28668,7 @@ Ember.Location.registerImplementation('hash', Ember.HashLocation);
 
 var get = Ember.get, set = Ember.set;
 var popstateFired = false;
+var supportsHistoryState = window.history && 'state' in window.history;
 
 /**
   Ember.HistoryLocation implements the location API using the browser's
@@ -28420,9 +28731,10 @@ Ember.HistoryLocation = Ember.Object.extend({
     @param path {String}
   */
   setURL: function(path) {
+    var state = this.getState();
     path = this.formatURL(path);
 
-    if (this.getState() && this.getState().path !== path) {
+    if (state && state.path !== path) {
       this.pushState(path);
     }
   },
@@ -28437,9 +28749,10 @@ Ember.HistoryLocation = Ember.Object.extend({
     @param path {String}
   */
   replaceURL: function(path) {
+    var state = this.getState();
     path = this.formatURL(path);
 
-    if (this.getState() && this.getState().path !== path) {
+    if (state && state.path !== path) {
       this.replaceState(path);
     }
   },
@@ -28448,11 +28761,13 @@ Ember.HistoryLocation = Ember.Object.extend({
    @private
 
    Get the current `history.state`
+   Polyfill checks for native browser support and falls back to retrieving
+   from a private _historyState variable
 
    @method getState
   */
   getState: function() {
-    return get(this, 'history').state;
+    return supportsHistoryState ? get(this, 'history').state : this._historyState;
   },
 
   /**
@@ -28464,7 +28779,15 @@ Ember.HistoryLocation = Ember.Object.extend({
    @param path {String}
   */
   pushState: function(path) {
-    get(this, 'history').pushState({ path: path }, null, path);
+    var state = { path: path };
+
+    get(this, 'history').pushState(state, null, path);
+
+    // store state if browser doesn't support `history.state`
+    if(!supportsHistoryState) {
+      this._historyState = state;
+    }
+
     // used for webkit workaround
     this._previousURL = this.getURL();
   },
@@ -28478,7 +28801,15 @@ Ember.HistoryLocation = Ember.Object.extend({
    @param path {String}
   */
   replaceState: function(path) {
-    get(this, 'history').replaceState({ path: path }, null, path);
+    var state = { path: path };
+
+    get(this, 'history').replaceState(state, null, path);
+
+    // store state if browser doesn't support `history.state`
+    if(!supportsHistoryState) {
+      this._historyState = state;
+    }
+
     // used for webkit workaround
     this._previousURL = this.getURL();
   },
@@ -28738,6 +29069,7 @@ var get = Ember.get,
   'view:blog/post' //=> Blog.PostView
   'view:basic' //=> Ember.View
   'foo:post' //=> App.PostFoo
+  'model:post' //=> App.Post
   ```
 
   @class DefaultResolver
@@ -28764,6 +29096,11 @@ Ember.DefaultResolver = Ember.Object.extend({
   resolve: function(fullName) {
     var parsedName = this.parseName(fullName),
         typeSpecificResolveMethod = this[parsedName.resolveMethodName];
+
+    if (!parsedName.name || !parsedName.type) {
+      throw new TypeError("Invalid fullName: `" + fullName + "`, must of of the form `type:name` ");
+    }
+
     if (typeSpecificResolveMethod) {
       var resolved = typeSpecificResolveMethod.call(this, parsedName);
       if (resolved) { return resolved; }
@@ -28857,6 +29194,17 @@ Ember.DefaultResolver = Ember.Object.extend({
   resolveView: function(parsedName) {
     this.useRouterNaming(parsedName);
     return this.resolveOther(parsedName);
+  },
+
+  /**
+    @protected
+    @method resolveModel
+  */
+  resolveModel: function(parsedName){
+    var className = classify(parsedName.name),
+        factory = get(parsedName.root, className);
+
+     if (factory) { return factory; }
   },
   /**
     Look up the specified object (from parsedName) on the appropriate
@@ -29415,7 +29763,6 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
       Ember.run.schedule('actions', this, function(){
         this._initialize();
-        this.startRouting();
       });
     }
 
@@ -31246,17 +31593,26 @@ Ember.Application.reopen({
 
 var $ = Ember.$;
 
-/**
- * Determine whether a checkbox checked using jQuery's "click" method will have
- * the correct value for its checked property. In some old versions of jQuery
- * (e.g. 1.8.3) this does not behave correctly.
- *
- * If we determine that the current jQuery version exhibits this behavior,
- * patch it to work correctly as in the commit for the actual fix:
- * https://github.com/jquery/jquery/commit/1fb2f92.
- */
-$('<input type="checkbox">')
-  .on('click', function() {
+function testCheckboxClick(handler) {
+  $('<input type="checkbox">')
+    .css({ position: 'absolute', left: '-1000px', top: '-1000px' })
+    .appendTo('body')
+    .on('click', handler)
+    .click()
+    .remove();
+}
+
+$(function() {
+  /**
+   * Determine whether a checkbox checked using jQuery's "click" method will have
+   * the correct value for its checked property. In some old versions of jQuery
+   * (e.g. 1.8.3) this does not behave correctly.
+   *
+   * If we determine that the current jQuery version exhibits this behavior,
+   * patch it to work correctly as in the commit for the actual fix:
+   * https://github.com/jquery/jquery/commit/1fb2f92.
+   */
+  testCheckboxClick(function() {
     if (!this.checked && !$.event.special.click) {
       $.event.special.click = {
         // For checkbox, fire native event so checked state will be right
@@ -31268,17 +31624,15 @@ $('<input type="checkbox">')
         }
       };
     }
-  })
-  .click();
+  });
 
-/**
- * Try again to verify that the patch took effect or blow up.
- */
-$('<input type="checkbox">')
-  .on('click', function() {
-    Ember.assert("clicked checkboxes should be checked! the jQuery patch didn't work", this.checked);
-  })
-  .click();
+  /**
+   * Try again to verify that the patch took effect or blow up.
+   */
+  testCheckboxClick(function() {
+    Ember.warn("clicked checkboxes should be checked! the jQuery patch didn't work", this.checked);
+  });
+});
 
 })();
 

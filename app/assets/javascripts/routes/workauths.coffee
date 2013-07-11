@@ -1,12 +1,15 @@
 App.WorkauthsRoute = Em.Route.extend
-  setupController: ->
-    console.log 'setting up workauths controller'
-  # model: (params) ->
-  #   if App.Auth.get('signedIn')
-  #     console.log params
-  #     App.Workauth.find()
+
+  model: ->
+    if App.Auth.get('signedIn')
+      App.Workauth.find()
+
   setupController: (controller, model) ->
-    # @_super(controller, model)
-    @controllerFor('user').set('workauths', model)
-    console.log model, @controllerFor('user').get('model').get('firstName')
+    userId = App.Auth.get('userId')
+    @_super(controller, model)
+    @controllerFor('workauths').set('currentUser', App.User.find(userId))
+
   beforeModel: ->
+    userId = App.Auth.get('userId')
+    if !App.User.find(userId).get('isLoaded')
+      return App.User.find(userId)

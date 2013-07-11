@@ -1,0 +1,1 @@
+App.WorkauthController = Em.ObjectController.extend()
