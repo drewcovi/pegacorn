@@ -4,7 +4,7 @@ pegacorn
 
 exploring ruby, coffeescript, ember and authentication
 
-||| Requirements
+## Requirements
 
 * Ruby
 * postgresql
